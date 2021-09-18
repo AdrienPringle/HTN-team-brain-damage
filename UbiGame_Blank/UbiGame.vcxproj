@@ -178,6 +178,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CollisionManager.cpp" />
     <ClCompile Include="Source\GameEngine\Util\SoundManager.cpp" />
+    <ClCompile Include="Source\Game\Components\BlobMovementComponent.cpp" />
+    <ClCompile Include="Source\Game\Components\PlayerMovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameBoard.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
@@ -201,6 +203,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\CollisionManager.h" />
     <ClInclude Include="Source\GameEngine\Util\SoundManager.h" />
+    <ClInclude Include="Source\Game\Components\BlobMovementComponent.h" />
+    <ClInclude Include="Source\Game\Components\PlayerMovementComponent.h" />
     <ClInclude Include="Source\Game\GameBoard.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\RenderComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Component.h" />
@@ -208,6 +212,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\img\meme.jpg" />
+    <Image Include="Resources\img\spongebob.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

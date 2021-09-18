@@ -11,13 +11,13 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-			Player = 0,
+			Player,
 			Tileset,
 			BG,
 			Particles,
+			Spongebob,
 			Meme,
 			Count,
-			NewImage,
 		};
 	}	
 
@@ -25,12 +25,12 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-		case eTexture::Player:    return "player.png";
+		case eTexture::Player:    return "Player.png";
 		case eTexture::Tileset:   return "tileset.png";
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
+		case eTexture::Spongebob: return "spongebob.jpg";
 		case eTexture::Meme: return "meme.jpg";
-		case eTexture::NewImage: return "newImage.png";
 		default:       return "UnknownTexType";
 		}
 	}
