@@ -1,6 +1,7 @@
 #include "LevelLoader.h"
 #include "Game/GameBoard.h"
 #include "GameEngine/GameEngineMain.h"
+#include "Game/GameEntities/ObstacleEntity.h"
 
 using namespace Game;
 LevelLoader::LevelLoader()
