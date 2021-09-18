@@ -173,11 +173,10 @@
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h">
-=======
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Game\GameEntities\LevelEntity.h">
->>>>>>> e15c42b (Add Level Entity)
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

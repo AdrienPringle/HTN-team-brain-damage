@@ -17,12 +17,9 @@ namespace GameEngine
 			Particles,
 			Wall,
 			Circle,
-<<<<<<< HEAD
 			Cliff,
 			Triangle,
-=======
 			Yubel,
->>>>>>> e15c42b (Add Level Entity)
 			Count,
 		};
 	}	
@@ -37,12 +34,9 @@ namespace GameEngine
 		case eTexture::Particles: return "particles.png";
 		case eTexture::Wall: 	  return "wall.png";
 		case eTexture::Circle: 	  return "circle.png";
-<<<<<<< HEAD
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
-=======
 		case eTexture::Yubel:	  return "yubel.jpg";
->>>>>>> e15c42b (Add Level Entity)
 		default:       return "UnknownTexType";
 		}
 	}

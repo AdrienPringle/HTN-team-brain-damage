@@ -96,8 +96,10 @@
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,8 +120,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,8 +139,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,8 +166,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -183,11 +191,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
     <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
-=======
     <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp" />
->>>>>>> e15c42b (Add Level Entity)
+    <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
     <ClCompile Include="Source\Game\Util\WallManager.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -219,11 +224,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
-<<<<<<< HEAD
-    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
-=======
     <ClInclude Include="Source\Game\GameEntities\LevelEntity.h" />
->>>>>>> e15c42b (Add Level Entity)
+    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
     <ClInclude Include="Source\Game\Util\WallManager.h" />
   </ItemGroup>
