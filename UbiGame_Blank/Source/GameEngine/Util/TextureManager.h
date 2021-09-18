@@ -17,6 +17,7 @@ namespace GameEngine
 			Particles,
 			Meme,
 			Count,
+			NewImage,
 		};
 	}	
 
@@ -29,6 +30,7 @@ namespace GameEngine
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
 		case eTexture::Meme: return "meme.jpg";
+		case eTexture::NewImage: return "newImage.png";
 		default:       return "UnknownTexType";
 		}
 	}
