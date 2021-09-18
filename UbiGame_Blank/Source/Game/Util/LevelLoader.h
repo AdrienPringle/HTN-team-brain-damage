@@ -9,13 +9,14 @@ namespace Game
 		~LevelLoader();
 
 		void Update();
-	private:
-
-
-		void CreateObstacle();
 
 		LevelLoader();
-		static LevelLoader* sm_istance;
+		
+		
+	private:
+		void CreateObstacle(sf::Vector2f *positions, sf::Vector2f *sizes, GameEngine::eTexture::type *textures);
+
+		void CreateBlobs();
 
 		sf::Vector2f *positions;
 		sf::Vector2f *sizes;

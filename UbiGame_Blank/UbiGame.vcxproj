@@ -196,6 +196,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\Game\GameEntities\StartEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
+    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
     <ClInclude Include="Source\Game\Util\LevelLoader.h" />
     <ClInclude Include="Source\Game\Util\MenuController.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h" />
@@ -218,11 +222,15 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
-
     <ClInclude Include="Source\Game\GameEntities\StartEntity.h" />
+    <ClInclude Include="Source\Game\Util\WallManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\img\circle.png" />
+    <Image Include="Resources\img\cliff.png" />
     <Image Include="Resources\img\start.png" />
+    <Image Include="Resources\img\triangle.png" />
+    <Image Include="Resources\img\wall.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

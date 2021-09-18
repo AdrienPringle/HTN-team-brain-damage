@@ -23,6 +23,7 @@ WallEntity::WallEntity()
     m_renderComponent->SetTexture(GameEngine::eTexture::Wall);
     m_renderComponent->SetZLevel(2);
 
+    //this makes a visible hitbox that doesn't match the wall
     m_collidableComponent = AddComponent<GameEngine::CollidableComponent>();
     m_collidableComponent->SetColliderType(GameEngine::ColliderType::NoClip);
 

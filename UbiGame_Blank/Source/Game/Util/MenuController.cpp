@@ -4,8 +4,8 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/ButtonComponent.h"
 #include "Game/GameBoard.h"
-//#include <iostream>
-
+#include "Game/Util/LevelLoader.h"
+#include "Game/Util/WallManager.h"
 
 using namespace Game;
 MenuController* MenuController::sm_instance = nullptr;
@@ -42,9 +42,16 @@ MenuController::~MenuController() {
 void MenuController::Update() {
 
 	if (item && buttonComponent->isClicked) {
-		StartGame();
+		StartGame();		
+		startGame = true;
 	}
-
+	if (startGame)
+	{ 
+		WallManager::GetInstance()->Update();
+		//load level
+		
+	}
+	
 }
 
 void MenuController::StartGame() {
@@ -54,4 +61,5 @@ void MenuController::StartGame() {
 	item = nullptr;
 
 	//initialize main game
+
 }

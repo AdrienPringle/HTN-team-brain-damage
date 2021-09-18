@@ -15,14 +15,11 @@ namespace GameEngine
 			Tileset,
 			BG,
 			Particles,
-<<<<<<< HEAD
 			Start,
-=======
 			Wall,
 			Circle,
 			Cliff,
 			Triangle,
->>>>>>> 4fda33bf34b1cd2ca031a95e9e2c3e32668ac846
 			Count,
 		};
 	}	
@@ -35,15 +32,11 @@ namespace GameEngine
 		case eTexture::Tileset:   return "tileset.png";
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
-<<<<<<< HEAD
 		case eTexture::Start: return "start.png";
-
-=======
 		case eTexture::Wall: 	  return "wall.png";
 		case eTexture::Circle: 	  return "circle.png";
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
->>>>>>> 4fda33bf34b1cd2ca031a95e9e2c3e32668ac846
 		default:       return "UnknownTexType";
 		}
 	}
