@@ -23,7 +23,7 @@ namespace Game
 		void CreatePlayer();          // <-- Added Function
 		void CreateBlob(float x, float y, float angle);
 		GameEngine::Entity* m_player; // <-- Added Member
-		//GameEngine::Entity* m_blob;
+		GameEngine::Entity* m_blob;
 	};
 
 }

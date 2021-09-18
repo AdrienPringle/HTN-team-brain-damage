@@ -1,13 +1,29 @@
-#include "CollidableComponent.h"
+#include "BlobComponent.h"
 
+#include "GameEngine/GameEngineMain.h"
+#include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Entity.h"
-#include "GameEngine/Util/CollisionManager.h"
+#include <random>
+
+#define PI 3.14159265
 
 using namespace GameEngine;
 
+BlobComponent::BlobComponent() {
+	render = AddComponent<GameEngine::SpriteRenderComponent>();
+	render->SetTexture(GameEngine::eTexture::Tileset);
+
+	auto gen = std::mt19937{ std::random_device{}() };
+
+	auto location = std::uniform_int_distribution<int>{ 50, 450 };
+	auto angle = std::uniform_int_distribution<int>{ 0, 359 };
+
+}
+BlobComponent::~BlobComponent() {
+
+}
+
 CollidableComponent::CollidableComponent()
-	: m_useDefaultBox(true)
-	, m_AABBBox()
 {
 
 }
@@ -63,4 +79,12 @@ const AABBRect CollidableComponent::GetWorldAABB() const
 	box.top += GetEntity()->GetPos().y;
 
 	return box;
+}
+
+void BlobComponent::SetAngle(float angle) {
+	float x = .1 * cos(angle * PI / 180);
+	float y = .1 * sin(angle * PI / 180);
+
+	displacement = { x,y };
+
 }

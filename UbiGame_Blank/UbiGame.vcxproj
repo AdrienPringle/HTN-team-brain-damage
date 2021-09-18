@@ -165,7 +165,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\BlobComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp" />
+    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableCircleComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\ButtonManager.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
@@ -175,7 +178,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\Util\AnimationManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CollisionManager.cpp" />
     <ClCompile Include="Source\GameEngine\Util\SoundManager.cpp" />
     <ClCompile Include="Source\Game\Components\BlobMovementComponent.cpp" />
@@ -190,6 +192,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\GameEngine\EntitySystem\Components\BlobComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\ButtonManager.h" />

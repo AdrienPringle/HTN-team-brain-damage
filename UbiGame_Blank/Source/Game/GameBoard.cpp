@@ -8,6 +8,10 @@
 
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+
 #include <iostream>;
 #include <random>
 #include<math.h>
@@ -43,7 +47,7 @@ void GameBoard::CreatePlayer()
 {
 	m_player = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
-	m_player->SetPos(sf::Vector2f(50.0f, 50.0f));
+	m_player->SetPos(sf::Vector2f(100.0f, 100.0f));
 	m_player->SetSize(sf::Vector2f(200.0f, 200.0f));
 
 	//Render
@@ -54,19 +58,22 @@ void GameBoard::CreatePlayer()
 
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
+
+	std::cout << render->GetEntity()->GetPos().x << std::endl;
 }
 
 void GameBoard::CreateBlob(float x, float y, float angle)
 {
-	GameEngine::Entity* m_blob = new GameEngine::Entity();
+	m_blob = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_blob);
 
-
-	std::cout << x << " " << y << std::endl;
 	m_blob->SetPos(sf::Vector2f(x, y));
 	m_blob->SetSize(sf::Vector2f(10.0f, 10.0f));
 	GameEngine::SpriteRenderComponent* render = m_blob->AddComponent<GameEngine::SpriteRenderComponent>();
+	
 	render->SetTexture(GameEngine::eTexture::Tileset);
 	Game::BlobMovementComponent* blobMove = m_blob->AddComponent<Game::BlobMovementComponent>();
+	GameEngine::CollidablePhysicsComponent* blobCollide = m_blob->AddComponent<GameEngine::CollidablePhysicsComponent>();
 	blobMove->setAngle(angle);
+	
 }

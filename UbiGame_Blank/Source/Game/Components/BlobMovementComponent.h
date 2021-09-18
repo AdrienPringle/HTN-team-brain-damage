@@ -2,7 +2,9 @@
 
 #include "GameEngine/EntitySystem/Component.h"
 
-#include "GameEngine/GameEngineMain.h" //<-- Add this include to retrieve the delta time between frames
+#include "GameEngine/GameEngineMain.h" //<-- Add this include to retrieve the delta time between 
+
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 
 
 
@@ -14,7 +16,6 @@ namespace Game
         BlobMovementComponent();
         virtual void Update() override;
         virtual void OnAddToWorld() override;
-
         void setAngle(float angle);
 
         sf::Vector2f displacement;

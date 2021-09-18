@@ -6,6 +6,10 @@
 
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
+
+#include "GameEngine/Util/CollisionManager.h"
+#include "GameEngine/EntitySystem/Entity.h"
+
 #include <iostream>
 
 #include <math.h>
@@ -15,37 +19,12 @@
 using namespace Game;
 
 BlobMovementComponent::BlobMovementComponent()
-    :m_lastFaceIndex(0)
 {   
-    srand(time(NULL));
-    
-
-    float(rand()) / float((RAND_MAX) * .5);
-    float sign1;
-    float sign2;
-    if ((rand() % 4 + 1) > 3) {
-        sign1 = 1;
-        sign2 = 1;
-    } else if ((rand() % 4 + 1) > 2) {
-        sign1 = 1;
-        sign2 = -1;
-    } else if ((rand() % 4 + 1) > 1) {
-        sign1 = -1;
-        sign2 = 1;
-    } else {
-        sign1 = -1;
-        sign2 = -1;
-    }
-    float x = float(rand()) / (float((RAND_MAX)*20) * sign1);
-    float y = float(rand()) / (float((RAND_MAX)*20) * sign2);
-    
-    displacement = { x/10, y/10};
 }
 
 void BlobMovementComponent::setAngle(float angle) {
-    //setangle
-    float x = .01 *cos(angle * PI / 180);
-    float y = .01 * sin(angle * PI / 180);
+    float x = .1 *cos(angle * PI / 180);
+    float y = .1 * sin(angle * PI / 180);
 
     displacement = { x,y };
     
@@ -63,4 +42,6 @@ void BlobMovementComponent::Update() {
     
 }
 
-void BlobMovementComponent::OnAddToWorld() {}
+void BlobMovementComponent::OnAddToWorld() {
+
+}

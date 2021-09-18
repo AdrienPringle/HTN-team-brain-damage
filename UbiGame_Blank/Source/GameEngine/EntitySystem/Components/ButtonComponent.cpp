@@ -5,10 +5,10 @@
 
 #include "GameEngine/GameEngineMain.h"
 
+
 using namespace GameEngine;
 
 ButtonComponent::ButtonComponent()
-    : m_useDefaultBox(true)
 {
 
 }
