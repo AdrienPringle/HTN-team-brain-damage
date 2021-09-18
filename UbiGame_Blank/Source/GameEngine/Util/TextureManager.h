@@ -17,6 +17,8 @@ namespace GameEngine
 			Particles,
 			Wall,
 			Circle,
+			Cliff,
+			Triangle,
 			Count,
 		};
 	}	
@@ -31,6 +33,8 @@ namespace GameEngine
 		case eTexture::Particles: return "particles.png";
 		case eTexture::Wall: 	  return "wall.png";
 		case eTexture::Circle: 	  return "circle.png";
+		case eTexture::Cliff: 	  return "cliff.png";
+		case eTexture::Triangle:  return "triangle.png";
 		default:       return "UnknownTexType";
 		}
 	}
