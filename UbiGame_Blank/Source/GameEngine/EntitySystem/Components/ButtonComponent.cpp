@@ -2,13 +2,13 @@
 
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/Util/ButtonManager.h"
-
+#include <iostream>
 #include "GameEngine/GameEngineMain.h"
 
 using namespace GameEngine;
 
 ButtonComponent::ButtonComponent()
-    : m_useDefaultBox(true)
+    : m_useDefaultBox(true), isClicked{false}
 {
 
 }
@@ -70,4 +70,6 @@ const AABBRect ButtonComponent::GetWorldAABB() const
 
 void ButtonComponent::OnButtonClicked()
 {
+    isClicked = true;
 }
+

@@ -24,6 +24,8 @@ namespace GameEngine
 
         virtual void OnButtonClicked();
 
+        bool isClicked;
+
     protected:
         void SetupDefaultBoundingBox();
 

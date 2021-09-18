@@ -15,6 +15,7 @@ namespace GameEngine
 			Tileset,
 			BG,
 			Particles,
+			Start,
 			Count,
 		};
 	}	
@@ -27,6 +28,8 @@ namespace GameEngine
 		case eTexture::Tileset:   return "tileset.png";
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
+		case eTexture::Start: return "start.png";
+
 		default:       return "UnknownTexType";
 		}
 	}
