@@ -165,6 +165,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Game\Util\LevelLoader.cpp" />
     <ClCompile Include="Source\Game\Util\MenuController.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
@@ -190,6 +191,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\Game\GameEntities\StartEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Game\Util\LevelLoader.h" />
     <ClInclude Include="Source\Game\Util\MenuController.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
