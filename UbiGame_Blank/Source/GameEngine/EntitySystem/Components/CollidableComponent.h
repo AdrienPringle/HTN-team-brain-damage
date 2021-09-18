@@ -8,6 +8,12 @@ namespace GameEngine
 {
 	typedef sf::Rect<float> AABBRect;
 
+	enum ColliderType {
+		Circle,
+		Line,
+		NoClip
+	};
+
 	class CollidableComponent : public Component
 	{
 	public:
@@ -17,16 +23,43 @@ namespace GameEngine
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
 
-		const AABBRect GetLocalAABB() const { return m_AABBBox; }
-		const AABBRect GetWorldAABB() const;
+		
+		sf::Vector2f  intersects(CollidableComponent* c);
 
-		void SetBoundingBox(sf::Vector2f size);
+		sf::Vector2f didIntersect();
+		void setIntersectDist(sf::Vector2f dist);
+		void resolveIntersect();
+
+		void SetColliderType(ColliderType type){ m_type = type; }
+		ColliderType GetColliderType(){ return m_type; }
+
+		//for circle
+		float getRadius();
+		void SetBoundingCircle(float r);
+
+		//for line
+		float getLength();
+		sf::Vector2f getStart();
+		sf::Vector2f getEnd();
+		void setIntersectLine(sf::Vector2f s, sf::Vector2f e);
+		
+
 
 	protected:
-		void SetupDefaultBoundingBox();
-		
-		bool	 m_useDefaultBox;
-		AABBRect m_AABBBox;
+		void SetupDefaultBoundingCircle();
+
+		sf::Vector2f intersectsCircle(CollidableComponent* c);
+		sf::Vector2f intersectsLine(CollidableComponent * c);
+	
+		bool	 m_useDefaultCircle;
+
+		float radius;
+		sf::Vector2f start;
+		sf::Vector2f end; 
+
+		sf::Vector2f intersectDist;
+
+		ColliderType m_type;
 	};
 }
 

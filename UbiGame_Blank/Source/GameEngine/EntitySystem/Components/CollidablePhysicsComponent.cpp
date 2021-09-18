@@ -4,12 +4,15 @@
 #include "GameEngine/EntitySystem/Entity.h"
 
 #include <vector>
+#include <math.h>
+
+#include <iostream>
 
 using namespace GameEngine;
 
 CollidablePhysicsComponent::CollidablePhysicsComponent()
 {
-
+	
 }
 
 
@@ -35,35 +38,39 @@ void CollidablePhysicsComponent::Update()
 {
 	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
-
+	
 	for (int a = 0; a < collidables.size(); ++a)
 	{
 		CollidableComponent* colComponent = collidables[a];
 		if (colComponent == this)
 			continue;
-
-		AABBRect intersection;
-		AABBRect myBox = GetWorldAABB();
-		AABBRect colideBox = colComponent->GetWorldAABB();
-		if (myBox.intersects(colideBox, intersection))
+		if (
+			GetColliderType() == ColliderType::Line || 
+			GetColliderType() == ColliderType::NoClip || 
+			colComponent->GetColliderType() == ColliderType::NoClip
+		){
+			continue;
+		}
+		
+		
+		sf::Vector2f intersect = intersects(colComponent);
+		if (abs(intersect.x) > 0 || abs(intersect.y) > 0)
 		{
-			sf::Vector2f pos = GetEntity()->GetPos();
-			if (intersection.width < intersection.height)
-			{
-				if (myBox.left < colideBox.left)
-					pos.x -= intersection.width;
-				else
-					pos.x += intersection.width;
-			}
-			else
-			{
-				if (myBox.top < colideBox.top)
-					pos.y -= intersection.height;
-				else
-					pos.y += intersection.height;
-			}
+			
+			intersect.x /= 2;
+			intersect.y /= 2;
 
-			GetEntity()->SetPos(pos);
+			sf::Vector2f pos = GetEntity()->GetPos();
+			GetEntity()->SetPos(pos - intersect);
+			setIntersectDist(intersect);
+
+			if(colComponent->GetColliderType() == ColliderType::Circle){
+				sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
+				colComponent->GetEntity()->SetPos(colPos + intersect);
+				colComponent->setIntersectDist(-intersect);
+			}
+			colComponent->setIntersectDist(-intersect);
+			
 		}
 	}
 }

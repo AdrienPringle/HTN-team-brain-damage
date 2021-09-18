@@ -42,10 +42,11 @@ void RenderComponent::Render(sf::RenderTarget* target)
 		if (CollidableComponent* collidable = GetEntity()->GetComponent<CollidableComponent>())
 		{
 			sf::RectangleShape rect = sf::RectangleShape();
-			AABBRect aabb = collidable->GetWorldAABB();
+			float radius = collidable->getRadius();
+			
 
-			rect.setSize(sf::Vector2f(aabb.width, aabb.height));
-			rect.setPosition(sf::Vector2f(aabb.left, aabb.top));
+			rect.setSize(sf::Vector2f(radius*2, radius*2));
+			rect.setPosition(collidable->GetEntity()->GetPos());
 
 			sf::Color col = m_fillColor;
 			col.b = 255;

@@ -81,6 +81,7 @@
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Source\Game\Util\MenuController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,6 +89,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\Util\LevelLoader.cpp">
+=======
+    <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Util\WallManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp">
+>>>>>>> 4fda33bf34b1cd2ca031a95e9e2c3e32668ac846
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,6 +168,7 @@
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Source\Game\Util\MenuController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -166,5 +183,22 @@
     <Image Include="Resources\img\start.png">
       <Filter>Resource Files</Filter>
     </Image>
+=======
+    <ClInclude Include="Source\Game\GameEntities\WallEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\Util\WallManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> 4fda33bf34b1cd2ca031a95e9e2c3e32668ac846
   </ItemGroup>
 </Project>
