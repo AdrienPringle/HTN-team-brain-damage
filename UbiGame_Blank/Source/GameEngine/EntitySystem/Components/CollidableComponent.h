@@ -17,16 +17,15 @@ namespace GameEngine
 		virtual void OnAddToWorld() override;
 		virtual void OnRemoveFromWorld() override;
 
-		const AABBRect GetLocalAABB() const { return m_AABBBox; }
-		const AABBRect GetWorldAABB() const;
-
-		void SetBoundingBox(sf::Vector2f size);
+		void SetBoundingCircle(float r);
+		float getRadius();
+		sf::Vector2f  intersects(CollidableComponent* c);
 
 	protected:
-		void SetupDefaultBoundingBox();
-		
-		bool	 m_useDefaultBox;
-		AABBRect m_AABBBox;
+		void SetupDefaultBoundingCircle();
+	
+		bool	 m_useDefaultCircle;
+		float radius;
 	};
 }
 
