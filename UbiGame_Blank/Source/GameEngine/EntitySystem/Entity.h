@@ -28,9 +28,9 @@ namespace GameEngine
         sf::Vector2f GetSize() const;
         float		 GetRot()  const;
 
-        void		 SetPos(sf::Vector2f pos);
+        virtual void SetPos(sf::Vector2f pos);
         void		 SetSize(sf::Vector2f size) { m_size = size; }
-        void	     SetRotation(float rotation) { m_rotation = rotation; }
+        virtual void SetRotation(float rotation) { m_rotation = rotation; }
 
         sf::Vector2f GetLocalPosOffset() const { return m_localPosOffset; }
         float		 GetLocalRotOffset() const { return m_localRotOffset; }
