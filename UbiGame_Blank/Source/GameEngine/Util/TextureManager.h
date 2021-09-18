@@ -16,6 +16,7 @@ namespace GameEngine
 			BG,
 			Particles,
 			Wall,
+			Circle,
 			Count,
 		};
 	}	
@@ -29,6 +30,7 @@ namespace GameEngine
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
 		case eTexture::Wall: 	  return "wall.png";
+		case eTexture::Circle: 	  return "circle.png";
 		default:       return "UnknownTexType";
 		}
 	}

@@ -54,6 +54,7 @@ namespace TextureHelper
         case  GameEngine::eTexture::BG:	     return sf::Vector2f(500.f, 500.f);
         case  GameEngine::eTexture::Particles: return sf::Vector2f(31.f, 32.f);
         case GameEngine::eTexture::Wall:  	 return sf::Vector2f(200.f, 20.f);
+		case GameEngine::eTexture::Circle:   return sf::Vector2f(896.f, 896.f);
 		default:							 return sf::Vector2f(-1.f, -1.f);
         }
     }

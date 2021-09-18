@@ -10,7 +10,7 @@ using namespace GameEngine;
 CollidableComponent::CollidableComponent()
 	: m_useDefaultCircle(true)
 {
-
+	intersectDist = sf::Vector2f(0.f, 0.f);
 }
 
 
@@ -75,4 +75,14 @@ sf::Vector2f CollidableComponent::intersects(CollidableComponent* c){
 float CollidableComponent::getRadius()
 {
 	return radius;
+}
+
+sf::Vector2f CollidableComponent::didIntersect(){
+	return intersectDist;
+}
+void CollidableComponent::setIntersectDist(sf::Vector2f dist){
+	intersectDist = dist;
+}
+void CollidableComponent::resolveIntersect(){
+	intersectDist = sf::Vector2f(0.f, 0.f);
 }

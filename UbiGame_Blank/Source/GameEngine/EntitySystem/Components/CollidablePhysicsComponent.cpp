@@ -10,7 +10,7 @@ using namespace GameEngine;
 
 CollidablePhysicsComponent::CollidablePhysicsComponent()
 {
-
+	
 }
 
 
@@ -36,7 +36,7 @@ void CollidablePhysicsComponent::Update()
 {
 	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
-
+	
 	for (int a = 0; a < collidables.size(); ++a)
 	{
 		CollidableComponent* colComponent = collidables[a];
@@ -51,9 +51,11 @@ void CollidablePhysicsComponent::Update()
 
 			sf::Vector2f pos = GetEntity()->GetPos();
 			GetEntity()->SetPos(pos - intersect);
+			setIntersectDist(intersect);
 
 			sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
 			colComponent->GetEntity()->SetPos(colPos + intersect);
+			colComponent->setIntersectDist(-intersect);
 		}
 	}
 }

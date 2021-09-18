@@ -21,11 +21,17 @@ namespace GameEngine
 		float getRadius();
 		sf::Vector2f  intersects(CollidableComponent* c);
 
+		sf::Vector2f didIntersect();
+		void setIntersectDist(sf::Vector2f dist);
+		void resolveIntersect();
+
 	protected:
 		void SetupDefaultBoundingCircle();
 	
 		bool	 m_useDefaultCircle;
 		float radius;
+
+		sf::Vector2f intersectDist;
 	};
 }
 
