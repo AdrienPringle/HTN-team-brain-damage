@@ -96,7 +96,7 @@
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\GameEntities\GoalEntity.cpp">
+    <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -173,7 +173,7 @@
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h">
+    <ClInclude Include="Source\Game\GameEntities\LevelEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\GameEntities\GoalEntity.h">
