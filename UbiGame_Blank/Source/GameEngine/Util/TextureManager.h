@@ -17,6 +17,7 @@ namespace GameEngine
 			Particles,
 			Wall,
 			Circle,
+			Yubel,
 			Count,
 		};
 	}	
@@ -31,6 +32,7 @@ namespace GameEngine
 		case eTexture::Particles: return "particles.png";
 		case eTexture::Wall: 	  return "wall.png";
 		case eTexture::Circle: 	  return "circle.png";
+		case eTexture::Yubel:	  return "yubel.jpg";
 		default:       return "UnknownTexType";
 		}
 	}
