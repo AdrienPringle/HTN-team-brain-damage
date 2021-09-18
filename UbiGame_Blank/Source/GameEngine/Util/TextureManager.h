@@ -27,6 +27,7 @@ namespace GameEngine
 			Goal2,
 			Goal3,
 			Goal4,
+			Yubel,
 			Count,
 		};	
 	}	
@@ -45,16 +46,15 @@ namespace GameEngine
 		case eTexture::Circle: 	  return "circle.png";
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
-
 		case eTexture::Blob1: 	  return "blob1.png";
 		case eTexture::Blob2: 	  return "blob2.png";
 		case eTexture::Blob3: 	  return "blob3.png";
 		case eTexture::Blob4:     return "blob4.png";
-
 		case eTexture::Goal1: 	  return "goal1.png";
 		case eTexture::Goal2: 	  return "goal2.png";
 		case eTexture::Goal3: 	  return "goal3.png";
 		case eTexture::Goal4:     return "goal4.png";
+		case eTexture::Yubel:	  return "yubel.jpg";
 		default:       return "UnknownTexType";
 		}
 	}
