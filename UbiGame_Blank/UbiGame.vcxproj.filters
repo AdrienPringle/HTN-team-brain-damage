@@ -96,6 +96,9 @@
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h">
@@ -170,7 +173,11 @@
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h">
+=======
+    <ClInclude Include="Source\Game\GameEntities\LevelEntity.h">
+>>>>>>> e15c42b (Add Level Entity)
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
