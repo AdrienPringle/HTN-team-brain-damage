@@ -87,10 +87,10 @@
     <ClCompile Include="Source\Game\Util\WallManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp">
+    <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp">
+    <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,10 +161,10 @@
     <ClInclude Include="Source\Game\Util\WallManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
+    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h">
+    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

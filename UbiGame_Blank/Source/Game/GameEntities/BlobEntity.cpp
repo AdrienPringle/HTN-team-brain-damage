@@ -24,6 +24,7 @@ BlobEntity::BlobEntity()
     m_renderComponent->SetZLevel(2);
 
     m_collideComponent = AddComponent<GameEngine::CollidablePhysicsComponent>();
+    m_collideComponent->SetColliderType(GameEngine::ColliderType::Circle);
 
     SetSize(sf::Vector2f(WIDTH, HEIGHT));
 }

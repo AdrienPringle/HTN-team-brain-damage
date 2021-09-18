@@ -6,6 +6,8 @@
 #include <vector>
 #include <math.h>
 
+#include <iostream>
+
 using namespace GameEngine;
 
 CollidablePhysicsComponent::CollidablePhysicsComponent()
@@ -42,10 +44,19 @@ void CollidablePhysicsComponent::Update()
 		CollidableComponent* colComponent = collidables[a];
 		if (colComponent == this)
 			continue;
+		if (
+			GetColliderType() == ColliderType::Line || 
+			GetColliderType() == ColliderType::NoClip || 
+			colComponent->GetColliderType() == ColliderType::NoClip
+		){
+			continue;
+		}
+		
 		
 		sf::Vector2f intersect = intersects(colComponent);
-		if (intersect.x > 0 || intersect.y > 0)
+		if (abs(intersect.x) > 0 || abs(intersect.y) > 0)
 		{
+			
 			intersect.x /= 2;
 			intersect.y /= 2;
 
@@ -53,9 +64,13 @@ void CollidablePhysicsComponent::Update()
 			GetEntity()->SetPos(pos - intersect);
 			setIntersectDist(intersect);
 
-			sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
-			colComponent->GetEntity()->SetPos(colPos + intersect);
+			if(colComponent->GetColliderType() == ColliderType::Circle){
+				sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
+				colComponent->GetEntity()->SetPos(colPos + intersect);
+				colComponent->setIntersectDist(-intersect);
+			}
 			colComponent->setIntersectDist(-intersect);
+			
 		}
 	}
 }

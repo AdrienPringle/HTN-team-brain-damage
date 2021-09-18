@@ -1,6 +1,8 @@
 #pragma once
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+
 
 namespace Game
 {
@@ -22,6 +24,7 @@ namespace Game
 
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
+        GameEngine::CollidableComponent *m_collidableComponent;
 
         sf::Vector2f getOffset();
 
@@ -29,5 +32,8 @@ namespace Game
 
         bool isBeingPlaced;
         void place();
+
+        void updateIntersectLine();
+        void handleIntersect();
     };
 }

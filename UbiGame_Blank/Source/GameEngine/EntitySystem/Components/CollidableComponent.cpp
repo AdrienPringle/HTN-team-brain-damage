@@ -53,7 +53,12 @@ void CollidableComponent::SetBoundingCircle(float r)
 	m_useDefaultCircle = false;
 }
 
-sf::Vector2f CollidableComponent::intersects(CollidableComponent* c){
+void CollidableComponent::setIntersectLine(sf::Vector2f s, sf::Vector2f e){
+	start = s;
+	end = e;
+}
+
+sf::Vector2f CollidableComponent::intersectsCircle(CollidableComponent *c){
 	float touchDistance = c->getRadius() + radius;
 	sf::Vector2f posDiff = c->GetEntity()->GetPos() - GetEntity()->GetPos();
 	
@@ -71,10 +76,84 @@ sf::Vector2f CollidableComponent::intersects(CollidableComponent* c){
 	posDiff.y *= scale;
 	return posDiff;
 }
+sf::Vector2f CollidableComponent::intersectsLine(CollidableComponent *c){
+	//line to circle
+	CollidableComponent* circle;
+	CollidableComponent* line;
+	if(GetColliderType() == ColliderType::Circle){
+		circle = this;
+		line = c;
+	} else {
+		circle = c;
+		line = this;
+	}
+	sf::Vector2f lStart = line->getStart();
+	sf::Vector2f lEnd = line->getEnd();
+
+	sf::Vector2f point = circle->GetEntity()->GetPos();
+
+	sf::Vector2f normal = sf::Vector2f(lStart.y - lEnd.y, lEnd.x - lStart.x);
+	float multiple = (lEnd.x-lStart.x)*(lStart.y-point.y)-(lStart.x-point.x)*(lEnd.y-lStart.y);
+	float dist = (lStart.x-lEnd.x)*(lStart.x-lEnd.x)+(lStart.y-lEnd.y)*(lStart.y-lEnd.y);
+
+	float closestDistance = std::abs(multiple)/sqrt(dist);
+	if(closestDistance > circle->getRadius()){
+		return sf::Vector2f(0.f, 0.f);
+	}
+
+	sf::Vector2f closestPoint = point + sf::Vector2f(normal.x * multiple / dist, normal.y * multiple / dist);
+
+	float len;
+	sf::Vector2f diff = lStart - lEnd;
+	if(std::abs(diff.x) > std::abs(diff.y)){
+		len = (closestPoint.x - lEnd.x)/diff.x;
+	}else{
+		len = (closestPoint.y - lEnd.y)/diff.y;
+	}
+	sf::Vector2f offset;
+	if(len < 0){
+		offset = point - lStart;
+		closestDistance = sqrt(offset.x*offset.x + offset.y*offset.y);
+	} else if (len > 1) {
+		offset = point - lEnd;
+		closestDistance = sqrt(offset.x*offset.x + offset.y*offset.y);
+	}else{
+		offset = point - closestPoint;
+	}
+	if(closestDistance > circle->getRadius()){
+		return sf::Vector2f(0.f, 0.f);
+	}
+
+	sf::Vector2f change = sf::Vector2f(-offset.x * (circle->getRadius() - closestDistance), -offset.y * (circle->getRadius() - closestDistance));
+	return change;
+}
+sf::Vector2f CollidableComponent::intersects(CollidableComponent* c){
+	//no line to line collisions
+	if(GetColliderType() == ColliderType::Line && c->GetColliderType() == ColliderType::Line){
+		return sf::Vector2f(0.f, 0.f);
+	}
+
+	//circle to circle
+	if(GetColliderType() == ColliderType::Circle && c->GetColliderType() == ColliderType::Circle){
+		return intersectsCircle(c);
+	}
+	
+	return intersectsLine(c);
+
+	
+}
 
 float CollidableComponent::getRadius()
 {
 	return radius;
+}
+sf::Vector2f CollidableComponent::getStart()
+{
+	return start;
+}
+sf::Vector2f CollidableComponent::getEnd()
+{
+	return end;
 }
 
 sf::Vector2f CollidableComponent::didIntersect(){

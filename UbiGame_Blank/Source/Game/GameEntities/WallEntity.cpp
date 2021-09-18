@@ -7,6 +7,7 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
 
 using namespace Game;
 
@@ -21,6 +22,10 @@ WallEntity::WallEntity()
     m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
     m_renderComponent->SetTexture(GameEngine::eTexture::Wall);
     m_renderComponent->SetZLevel(2);
+
+    m_collidableComponent = AddComponent<GameEngine::CollidableComponent>();
+    m_collidableComponent->SetColliderType(GameEngine::ColliderType::NoClip);
+
 
     SetSize(sf::Vector2f(WIDTH, HEIGHT));
 }
@@ -38,6 +43,19 @@ void WallEntity::OnRemoveFromWorld()
 {
     Entity::OnRemoveFromWorld();
 }
+void WallEntity::updateIntersectLine(){
+    sf::Vector2f offset = getOffset();
+    m_collidableComponent->setIntersectLine(GetPos() - offset, GetPos() + offset);
+}
+void WallEntity::handleIntersect(){
+    sf::Vector2f intersect = m_collidableComponent->didIntersect();
+    if(intersect.x != 0.f || intersect.y != 0.f){
+
+        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+        
+    
+    }
+}
 
 void WallEntity::Update()
 {
@@ -51,11 +69,15 @@ void WallEntity::Update()
         sf::Vector2f diff = GetPos() - getOffset() - sf::Vector2f(sf::Mouse::getPosition(*window));
         float angle = atan2(-diff.y, -diff.x) * 180 / M_PI;
         SetRotation(angle);
+        
+        
 
         if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-            isBeingPlaced = false;
+            place();
         }
+    }else{
+        handleIntersect();
     }
 }
 
@@ -81,6 +103,8 @@ void WallEntity::SetRotation(float rotation)
 void WallEntity::place()
 {
     isBeingPlaced = false;
+    m_collidableComponent->SetColliderType(GameEngine::ColliderType::Line);
+    updateIntersectLine();
 }
 
 float WallEntity::getAngle()
