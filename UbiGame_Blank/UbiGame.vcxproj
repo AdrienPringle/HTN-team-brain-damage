@@ -26,7 +26,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
+    <UseDebugLibraries>true</UseDebugLibraries> 
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -96,8 +96,10 @@
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,8 +120,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,8 +139,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,8 +166,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -185,6 +193,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
     <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
     <ClCompile Include="Source\Game\Util\WallManager.cpp" />
@@ -223,6 +232,11 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\StartEntity.h" />
+    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
+    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\LevelEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
     <ClInclude Include="Source\Game\Util\WallManager.h" />
   </ItemGroup>
   <ItemGroup>

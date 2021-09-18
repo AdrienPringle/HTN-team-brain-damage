@@ -20,6 +20,7 @@ namespace GameEngine
 			Circle,
 			Cliff,
 			Triangle,
+			Yubel,
 			Count,
 		};
 	}	
@@ -37,6 +38,7 @@ namespace GameEngine
 		case eTexture::Circle: 	  return "circle.png";
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
+		case eTexture::Yubel:	  return "yubel.jpg";
 		default:       return "UnknownTexType";
 		}
 	}
