@@ -55,10 +55,8 @@ namespace TextureHelper
         case GameEngine::eTexture::Particles: return sf::Vector2f(31.f, 32.f);
         case GameEngine::eTexture::Wall:  	 return sf::Vector2f(200.f, 20.f);
 		case GameEngine::eTexture::Circle:   return sf::Vector2f(896.f, 896.f);
-<<<<<<< HEAD
 		case GameEngine::eTexture::Cliff:   return sf::Vector2f(200.f, 200.f);
 		case GameEngine::eTexture::Triangle:   return sf::Vector2f(1845.f, 1492.f);
-<<<<<<< HEAD
 
 		case GameEngine::eTexture::Blob1:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Blob2:   return sf::Vector2f(896.f, 896.f);
