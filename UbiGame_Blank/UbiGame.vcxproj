@@ -218,18 +218,11 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
-<<<<<<< HEAD
+
     <ClInclude Include="Source\Game\GameEntities\StartEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\img\start.png" />
-=======
-    <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
-    <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
-    <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
-    <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
-    <ClInclude Include="Source\Game\Util\WallManager.h" />
->>>>>>> 4fda33bf34b1cd2ca031a95e9e2c3e32668ac846
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
