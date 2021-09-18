@@ -3,11 +3,12 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/Util/CollisionManager.h"
 
+#include <algorithm> 
+
 using namespace GameEngine;
 
 CollidableComponent::CollidableComponent()
-	: m_useDefaultBox(true)
-	, m_AABBBox()
+	: m_useDefaultCircle(true)
 {
 
 }
@@ -24,8 +25,8 @@ void CollidableComponent::OnAddToWorld()
 	Component::OnAddToWorld();
 	CollisionManager::GetInstance()->RegisterCollidable(this);
 
-	if (m_useDefaultBox)
-		SetupDefaultBoundingBox();
+	if (m_useDefaultCircle)
+		SetupDefaultBoundingCircle();
 }
 
 
@@ -37,30 +38,41 @@ void CollidableComponent::OnRemoveFromWorld()
 }
 
 
-void CollidableComponent::SetupDefaultBoundingBox()
+void CollidableComponent::SetupDefaultBoundingCircle()
 {
-	//Static AABB for the time being		
-	SetBoundingBox(GetEntity()->GetSize());
+	sf::Vector2f size = GetEntity()->GetSize();
+	float max = std::max(size.x, size.y) / 2;
+	SetBoundingCircle(max);
 }
 
 
-void CollidableComponent::SetBoundingBox(sf::Vector2f size)
+void CollidableComponent::SetBoundingCircle(float r)
 {
-	m_AABBBox.width = size.x;
-	m_AABBBox.height = size.y;
+	radius = r;
 
-	m_AABBBox.left = -m_AABBBox.width / 2.f;
-	m_AABBBox.top = -m_AABBBox.height / 2.f;
-
-	m_useDefaultBox = false;
+	m_useDefaultCircle = false;
 }
 
-const AABBRect CollidableComponent::GetWorldAABB() const
-{ 
-	AABBRect box = m_AABBBox;
+sf::Vector2f CollidableComponent::intersects(CollidableComponent* c){
+	float touchDistance = c->getRadius() + radius;
+	sf::Vector2f posDiff = c->GetEntity()->GetPos() - GetEntity()->GetPos();
 	
-	box.left += GetEntity()->GetPos().x;
-	box.top  += GetEntity()->GetPos().y;	
+	if(std::abs(posDiff.x) >= touchDistance || std::abs(posDiff.y) >= touchDistance){
+		return sf::Vector2f(0.f, 0.f);
+	}
+	float squareDist = posDiff.x * posDiff.x + posDiff.y * posDiff.y;
+	if(squareDist >= touchDistance * touchDistance){
+		return sf::Vector2f(0.f, 0.f);
+	}
 
-	return box;
+	float dist = sqrt(squareDist);
+	float scale = (touchDistance - dist)/dist;
+	posDiff.x *= scale;
+	posDiff.y *= scale;
+	return posDiff;
+}
+
+float CollidableComponent::getRadius()
+{
+	return radius;
 }

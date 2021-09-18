@@ -4,6 +4,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 
 #include <vector>
+#include <math.h>
 
 using namespace GameEngine;
 
@@ -41,29 +42,18 @@ void CollidablePhysicsComponent::Update()
 		CollidableComponent* colComponent = collidables[a];
 		if (colComponent == this)
 			continue;
-
-		AABBRect intersection;
-		AABBRect myBox = GetWorldAABB();
-		AABBRect colideBox = colComponent->GetWorldAABB();
-		if (myBox.intersects(colideBox, intersection))
+		
+		sf::Vector2f intersect = intersects(colComponent);
+		if (intersect.x > 0 || intersect.y > 0)
 		{
-			sf::Vector2f pos = GetEntity()->GetPos();
-			if (intersection.width < intersection.height)
-			{
-				if (myBox.left < colideBox.left)
-					pos.x -= intersection.width;
-				else
-					pos.x += intersection.width;
-			}
-			else
-			{
-				if (myBox.top < colideBox.top)
-					pos.y -= intersection.height;
-				else
-					pos.y += intersection.height;
-			}
+			intersect.x /= 2;
+			intersect.y /= 2;
 
-			GetEntity()->SetPos(pos);
+			sf::Vector2f pos = GetEntity()->GetPos();
+			GetEntity()->SetPos(pos - intersect);
+
+			sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
+			colComponent->GetEntity()->SetPos(colPos + intersect);
 		}
 	}
 }
