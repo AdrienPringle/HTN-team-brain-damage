@@ -12,8 +12,8 @@
 
 using namespace Game;
 
-const float WIDTH = 200.f;
-const float HEIGHT = 200.f;
+const float WIDTH = 150.f;
+const float HEIGHT = 150.f;
 
 GoalEntity::GoalEntity()
 {

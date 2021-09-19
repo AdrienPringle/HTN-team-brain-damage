@@ -121,7 +121,7 @@ void BlobEntity::Update()
             break;}
     }
     
-    checkBoundaries(50, 950, 50, 950);
+    checkBoundaries(140, 900, 60, 900);
 }
 
 void BlobEntity::reflect(sf::Vector2f normal){

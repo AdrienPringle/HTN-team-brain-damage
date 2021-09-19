@@ -22,7 +22,7 @@ TimerEntity::TimerEntity()
     m_renderComponent->SetCharacterSizePixels(30);
     m_renderComponent->SetColor(sf::Color(255,255,255));
 	m_renderComponent->SetString("Timer: 0");
-	m_renderComponent->SetZLevel(3);
+	m_renderComponent->SetZLevel(10);
     SetPos(sf::Vector2f{470.f,0.f});
 }
 

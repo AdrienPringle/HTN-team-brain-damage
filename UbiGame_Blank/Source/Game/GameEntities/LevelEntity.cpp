@@ -43,6 +43,29 @@ void LevelEntity::OnRemoveFromWorld()
     Entity::OnRemoveFromWorld();
 }
 
+sf::Vector2f LevelEntity::generatePos(){
+    float x = 500, y = 500;
+
+    std::uniform_real_distribution<float> xpos(250, 750);
+    std::uniform_real_distribution<float> ypos(200, 800);
+    while ( abs(x - 500) + abs(y - 500) < 100){
+        x = xpos(gen);
+        y = ypos(gen);
+    }
+    return sf::Vector2f(x,y);
+}
+float LevelEntity::generateAngle(sf::Vector2f pos){
+    float diffX = pos.x - 500.f;
+    float diffY = pos.y - 500.f;
+
+    std::uniform_int_distribution<int> angle(-45, 45);
+
+    float a = atan2f(diffY, diffX);
+    a += angle(gen);
+    return a;
+
+}
+
 void LevelEntity::Update()
 {
     Entity::Update();
@@ -54,15 +77,16 @@ void LevelEntity::Update()
 
     //randomize
     if (finishedSpawning == false && spawn) {
-        std::uniform_int_distribution<int> angle(0, 359);
+        
         std::uniform_int_distribution<int> color(1, 4);
-        std::uniform_real_distribution<float> position(200, 800);
+        
 
         //spawn
         BlobEntity* blob = new BlobEntity();
-        blob->setVelAngle(angle(gen));
-        blob->setSpeed(45);
-        blob->SetPos(sf::Vector2f{ position(gen),position(gen) });
+        blob->setSpeed(60);
+        sf::Vector2f pos = generatePos();
+        blob->SetPos(pos);
+        blob->setVelAngle(generateAngle(pos));
         blob->setColor(color(gen));
         GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
         counter++;

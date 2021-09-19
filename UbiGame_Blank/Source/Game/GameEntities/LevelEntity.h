@@ -32,6 +32,9 @@ namespace Game
         int counter;
         bool spawn;
 
+        sf::Vector2f generatePos();
+        float generateAngle(sf::Vector2f pos);
+
         
     };
 }
