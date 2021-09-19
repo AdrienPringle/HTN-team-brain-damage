@@ -26,6 +26,7 @@ namespace Game
 
         void setVelAngle(float a);
         void setSpeed(float s);
+        void checkBoundaries(float left, float right, float top, float bottom);
 
         float getAngle();
 
