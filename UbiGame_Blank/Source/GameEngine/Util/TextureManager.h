@@ -31,6 +31,7 @@ namespace GameEngine
 			Goal2,
 			Goal3,
 			Goal4,
+			Restart,
 			Yubel,
 			Count,
 		};	
@@ -62,6 +63,7 @@ namespace GameEngine
 		case eTexture::Goal2: 	  return "goal2.png";
 		case eTexture::Goal3: 	  return "goal3.png";
 		case eTexture::Goal4:     return "goal4.png";
+		case eTexture::Restart:     return "restart.png";
 		case eTexture::Yubel:	  return "yubel.jpg";
 		default:       return "UnknownTexType";
 		}

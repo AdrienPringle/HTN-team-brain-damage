@@ -20,12 +20,17 @@ namespace Game
 		int GetGoalBlobs();
 		int GetSuicidalBlobs();
 		int GetWrongGoalBlobs();
+
+		void AddGoal();
+		void ResetGoal();
 		
 	private:
 		PointManager();
 		static PointManager* sm_instance;
 
         std::vector<BlobEntity*> blobs;
+
+		int points;
 	
 	};	
 }

@@ -7,7 +7,13 @@
 #include "Game/GameBoard.h"
 #include "Game/Util/LevelLoader.h"
 #include "Game/Util/WallManager.h"
+#include "Game/Util/PointManager.h"
 #include  "Game/GameEntities/LevelEntity.h"
+#include "Game/GameEntities/GameOverEntity.h"
+#include "Game/GameEntities/TimerEntity.h"
+
+
+#include <iostream>
 
 using namespace Game;
 MenuController* MenuController::sm_instance = nullptr;
@@ -15,6 +21,14 @@ MenuController* MenuController::sm_instance = nullptr;
 
 MenuController::MenuController() {
 	CreateMenuItems(800.f, 3);
+
+	timer = new TimerEntity();
+	timer->setTime(0.5);
+	timer->setStartTime(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(timer);
+	PointManager::GetInstance()->ResetGoal();
+
+	gameState = GameState::MenuScreen;
 }
 
 
@@ -45,6 +59,8 @@ void MenuController::CreateMenuItems(float posY, int numitems) {
 		render2->SetZLevel(-1);
 
 		posY = (posY + offset);
+
+		endScreen = nullptr;
 	//}
 
 }
@@ -53,15 +69,45 @@ MenuController::~MenuController() {
 }
 
 void MenuController::Update() {
+	switch (gameState) {
+		case GameState::MenuScreen:{
+			if (item && buttonComponent->isClicked) {
+				StartGame();		
+				// startGame = true;
+				gameState = GameState::Game;
+				timer->setStartTime(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
+			}
+			break;
+		}
+		case GameState::Game:{
+			WallManager::GetInstance()->Update();
+			if (timer->timeUp()) {
+				gameState = GameState::TimeUp;
 
-	if (item && buttonComponent->isClicked) {
-		StartGame();		
-		startGame = true;
+				
+				endScreen = new Game::GameOverEntity();
+				GameEngine::GameEngineMain::GetInstance()->AddEntity(endScreen);
+				PointManager::GetInstance()->ResetGoal();
+
+			}	
+			break;
+		}
+		case GameState::TimeUp:{
+			if(endScreen->m_renderButton->isClicked){
+				GameEngine::GameEngineMain::GetInstance()->RemoveEntity(endScreen);
+				gameState = GameState::Game;
+				timer->setStartTime(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
+				PointManager::GetInstance()->ResetGoal();
+
+			}
+			break;
+		}
 	}
-	if (startGame)
-	{ 
-		WallManager::GetInstance()->Update();				
-	}
+	
+	// if(GameEngine::GameEngineMain::GetInstance()->GetGameTime() >= 2.f){
+	// 	GameOverEntity* gameOver = new GameOverEntity;
+	// 	GameEngine::GameEngineMain::GetInstance()->AddEntity(gameOver);
+	// }
 	
 }
 

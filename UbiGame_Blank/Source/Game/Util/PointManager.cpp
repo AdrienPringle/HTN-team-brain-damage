@@ -8,6 +8,7 @@ using namespace Game;
 PointManager* PointManager::sm_instance = nullptr;
 
 PointManager::PointManager(){
+    points = 0;
 }
 PointManager::~PointManager(){
 
@@ -36,14 +37,22 @@ void PointManager::Update(){
 
 }
 
+void PointManager::AddGoal(){
+    points ++;
+}
+void PointManager::ResetGoal(){
+    points = 0;
+}
+
 int PointManager::GetGoalBlobs(){
-    int goalBlobs = 0;
-    for(int i = 0; i < GetInstance()->GetBlobs().size(); i++ ){
-        if(GetInstance()->GetBlobs()[i]->getState() == Goal ){
-            goalBlobs++;
-        }
-    }
-    return goalBlobs;
+    return points;
+    // int goalBlobs = 0;
+    // for(int i = 0; i < GetInstance()->GetBlobs().size(); i++ ){
+    //     if(GetInstance()->GetBlobs()[i]->getState() == Goal ){
+    //         goalBlobs++;
+    //     }
+    // }
+    // return goalBlobs;
 }
 
 int PointManager::GetSuicidalBlobs() {

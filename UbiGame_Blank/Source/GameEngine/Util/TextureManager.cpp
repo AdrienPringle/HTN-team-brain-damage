@@ -70,6 +70,7 @@ namespace TextureHelper
 		case GameEngine::eTexture::Goal2:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Goal3:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Goal4:   return sf::Vector2f(896.f, 896.f);
+		case GameEngine::eTexture::Restart:   return sf::Vector2f(323.f, 72.f);
 
 		case GameEngine::eTexture::Yubel:   return sf::Vector2f(225.f, 225.f);
 		default:							 return sf::Vector2f(-1.f, -1.f);

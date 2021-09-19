@@ -43,5 +43,7 @@ void PointEntity::Update()
     }
 
     m_renderComponent->SetString("Points: " + std::to_string(points));
+
+    // m_renderComponent->SetString("Points: " + PointManager::GetInstance()->GetGoalBlobs());
 }
 

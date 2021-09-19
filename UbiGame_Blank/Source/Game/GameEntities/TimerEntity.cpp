@@ -40,36 +40,52 @@ void TimerEntity::OnRemoveFromWorld()
     Entity::OnRemoveFromWorld();
 }
 
-void TimerEntity::setTime(int t){
-    minute = t;
+void TimerEntity::setTime(float t){
+    countdownSeconds = (int)( 60 * t );
 }
-
+void TimerEntity::setStartTime(float time){
+    startTime = time;
+}
 void TimerEntity::Update()
 {
     Entity::Update();
-    if (second > 0 && minute >= 0){
-        second = (60*countdown-1) - static_cast<int>(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
-        if(second <= 9){
-            m_renderComponent->SetString( std::to_string(minute) + ":0" + std::to_string(second));
-        }else{
-            m_renderComponent->SetString( std::to_string(minute) + ":" + std::to_string(second));
-        }
-    }else if (minute > 0 && second <= 0){
-        countdown++;
-        second = (60*countdown-1);
-        minute--;
+    // if (second > 0 && minute >= 0){
+    //     second = (60*countdown-1) - static_cast<int>(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
+    //     if(second <= 9){
+    //         m_renderComponent->SetString( std::to_string(minute) + ":0" + std::to_string(second));
+    //     }else{
+    //         m_renderComponent->SetString( std::to_string(minute) + ":" + std::to_string(second));
+    //     }
+    // }else if (minute > 0 && second <= 0){
+    //     countdown++;
+    //     second = (60*countdown-1);
+    //     minute--;
+    //     m_renderComponent->SetString( std::to_string(minute) + ":" + std::to_string(second));
+    // }
+    // if(second <= 0 && minute <= 0){
+    //     m_renderComponent->SetString("0:00");
+    // }
+    float timeDiff = static_cast<int>(GameEngine::GameEngineMain::GetInstance()->GetGameTime()) - startTime;
+    float timeLeft = countdownSeconds - timeDiff;
+    second = ((int) timeLeft) % 60;
+    minute = ((int) timeLeft) / 60;
+
+    if(second < 0){
+        m_renderComponent->SetString("0:00");
+    }else if(second < 10){
+        m_renderComponent->SetString( std::to_string(minute) + ":0" + std::to_string(second));
+    }else{
         m_renderComponent->SetString( std::to_string(minute) + ":" + std::to_string(second));
     }
-    if(second <= 0 && minute <= 0){
-        m_renderComponent->SetString("0:00");
-    }
-
+    
 }
 
 bool TimerEntity::timeUp(){
-    if (second <= 0 && minute <= 0){
-        return true;
-    }else{
-        return false;
-    }
+    // if (second <= 0 && minute <= 0){
+    //     return true;
+    // }else{
+    //     return false;
+    // }
+    float timeDiff = static_cast<int>(GameEngine::GameEngineMain::GetInstance()->GetGameTime()) - startTime;
+    return (timeDiff > countdownSeconds); 
 }

@@ -153,6 +153,7 @@ void BlobEntity::handleIntersect(){
 
                 if(m_collideComponent->getCollidedComponent()->getColor() == color){
                     state = BlobState::Goal;
+                    PointManager::GetInstance()->AddGoal();
                 } else {
                     state = BlobState::WrongGoal;
                 }

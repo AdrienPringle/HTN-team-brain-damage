@@ -2,9 +2,18 @@
 
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/EntitySystem/Components/ButtonComponent.h"
+#include "Game/GameEntities/TimerEntity.h"
+#include "Game/GameEntities/GameOverEntity.h"
+
+
 
 namespace Game
-{
+{	
+	enum GameState {
+		MenuScreen,
+		Game,
+		TimeUp
+	};
 	class MenuController:public GameEngine::Entity
 	{
 	public:
@@ -24,10 +33,15 @@ namespace Game
 
 		GameEngine::ButtonComponent* buttonComponent;
 
-		bool startGame = false;
+		// bool startGame = false;
+		GameState gameState;
 
 		GameEngine::Entity* item;
 		GameEngine::Entity* item2;
+
+		Game::TimerEntity* timer;
+
+		Game::GameOverEntity* endScreen;
 
 
 	};

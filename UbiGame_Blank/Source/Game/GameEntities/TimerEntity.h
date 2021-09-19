@@ -15,10 +15,15 @@ namespace Game
         virtual void OnRemoveFromWorld() override;
         virtual void Update() override;
 
-        void setTime(int t);
+        void setTime(float t);
         bool timeUp();
+
+
+        void setStartTime(float time);
     protected:
         GameEngine::TextRenderComponent *m_renderComponent;
+        float startTime;
+        float countdownSeconds;
         
     };
 }

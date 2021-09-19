@@ -22,6 +22,7 @@ namespace Game
         void setFrenquency(float f);
         void setAmount(float a);
         void setLevel(int l);
+        void setTime(int m);
 
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
@@ -35,6 +36,7 @@ namespace Game
         sf::Vector2f generatePos();
         float generateAngle(sf::Vector2f pos);
 
+        int minute;
         
     };
 }

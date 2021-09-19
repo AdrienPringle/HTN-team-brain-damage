@@ -83,9 +83,9 @@ LevelLoader::LevelLoader()
 	obstacle->setTexture(GameEngine::eTexture::Triangle);
 
 
-	TimerEntity* timer = new TimerEntity();
-	GameEngine::GameEngineMain::GetInstance()->AddEntity(timer);
-	timer->setTime(1);
+	// TimerEntity* timer = new TimerEntity();
+	// GameEngine::GameEngineMain::GetInstance()->AddEntity(timer);
+	// timer->setTime(1);
 
 	PointEntity* pointCounter = new PointEntity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(pointCounter);
@@ -124,8 +124,8 @@ void LevelLoader::CreateBlobs() {
 	//GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
 
 	LevelEntity* level = new LevelEntity();
-	level->setAmount(30);
-	level->setFrenquency(4);
+	level->setTime(2);
+	level->setFrenquency(3);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(level);
 }
 

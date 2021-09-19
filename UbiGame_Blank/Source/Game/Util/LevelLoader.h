@@ -1,5 +1,6 @@
 #pragma once
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
+#include "Game/GameEntities/TimerEntity.h"
 namespace Game
 {
 	class LevelLoader
@@ -13,6 +14,9 @@ namespace Game
 		void Update();
 		
 		//void Level1();
+		TimerEntity* timer;
+
+		//int countdown;
 		
 	private:
 		void CreateObstacle(sf::Vector2f *positions, sf::Vector2f *sizes,
@@ -24,8 +28,9 @@ namespace Game
 
 		GameEngine::Entity* water;
 		GameEngine::Entity* island;
+		
 
 		void CreateFrogs();
-
+		void SetCountdown(int t);
 	};
 }

@@ -4,7 +4,7 @@
 #include "Game/Util/MenuController.h"
 #include "Game/Util/WallManager.h"
 #include "Game/Util/PointManager.h"
-
+#include "Game/Util/LevelLoader.h"
 
 #include<iostream>
 
@@ -12,7 +12,6 @@ using namespace Game;
 
 GameBoard::GameBoard()
 {
-
 }
 
 
