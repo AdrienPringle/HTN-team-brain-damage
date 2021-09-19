@@ -5,6 +5,12 @@
 
 namespace Game
 {
+    enum BlobState {
+        Active, 
+        Goal,
+        WrongGoal,
+        Edge
+    };
 
     class BlobEntity : public GameEngine::Entity
     {
@@ -16,6 +22,8 @@ namespace Game
         virtual void OnRemoveFromWorld() override;
         virtual void Update() override;
 
+        void setColor(int c);
+
         void setVelAngle(float a);
         void setSpeed(float s);
 
@@ -26,12 +34,16 @@ namespace Game
         GameEngine::CollidablePhysicsComponent * m_collideComponent;
 
         void handleIntersect();
+        BlobState state;
+
         void reflect(sf::Vector2f normal);
 
         float angle;
 
         sf::Vector2f velocity;
         float speed;
+
+        int color;
         
     };
 }

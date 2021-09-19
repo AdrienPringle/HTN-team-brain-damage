@@ -19,9 +19,19 @@ namespace GameEngine
 			Circle,
 			Cliff,
 			Triangle,
+			Blob1,
+			Blob2,
+			Blob3,
+			Blob4,
+			Goal1,
+			Goal2,
+			Goal3,
+			Goal4,
 			Count,
-		};
+		};	
 	}	
+	const eTexture::type blobTextures[4] = {eTexture::type::Blob1, eTexture::type::Blob2, eTexture::type::Blob3, eTexture::type::Blob4};
+	const eTexture::type goalTextures[4] = {eTexture::type::Goal1, eTexture::type::Goal2, eTexture::type::Goal3, eTexture::type::Goal4};
 
 	inline const char* GetPath(eTexture::type texture)
 	{
@@ -35,6 +45,16 @@ namespace GameEngine
 		case eTexture::Circle: 	  return "circle.png";
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
+
+		case eTexture::Blob1: 	  return "blob1.png";
+		case eTexture::Blob2: 	  return "blob2.png";
+		case eTexture::Blob3: 	  return "blob3.png";
+		case eTexture::Blob4:     return "blob4.png";
+
+		case eTexture::Goal1: 	  return "goal1.png";
+		case eTexture::Goal2: 	  return "goal2.png";
+		case eTexture::Goal3: 	  return "goal3.png";
+		case eTexture::Goal4:     return "goal4.png";
 		default:       return "UnknownTexType";
 		}
 	}

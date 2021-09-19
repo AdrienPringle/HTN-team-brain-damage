@@ -25,7 +25,7 @@ WallEntity::WallEntity()
 
     m_collidableComponent = AddComponent<GameEngine::CollidableComponent>();
     m_collidableComponent->SetColliderType(GameEngine::ColliderType::NoClip);
-
+    m_collidableComponent->SetEntityType(GameEngine::EntityType::Collider);
 
     SetSize(sf::Vector2f(WIDTH, HEIGHT));
 }
