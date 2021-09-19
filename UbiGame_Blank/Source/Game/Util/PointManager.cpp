@@ -3,6 +3,8 @@
 
 #include "Game/GameEntities/WallEntity.h"
 #include <assert.h>
+
+#include <iostream>
 using namespace Game;
 
 PointManager* PointManager::sm_instance = nullptr;
@@ -45,6 +47,7 @@ void PointManager::ResetGoal(){
 }
 
 int PointManager::GetGoalBlobs(){
+    // std::cout << points << "\n";
     return points;
     // int goalBlobs = 0;
     // for(int i = 0; i < GetInstance()->GetBlobs().size(); i++ ){

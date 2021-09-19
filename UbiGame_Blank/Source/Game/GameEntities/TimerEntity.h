@@ -18,7 +18,6 @@ namespace Game
         void setTime(float t);
         bool timeUp();
 
-
         void setStartTime(float time);
     protected:
         GameEngine::TextRenderComponent *m_renderComponent;

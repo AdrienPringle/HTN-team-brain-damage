@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <iostream>
 
+#include "Game/Util/Timer.h"
 const float WIDTH = 800;
 const float HEIGHT = 800;
 
@@ -77,7 +78,8 @@ void TimerEntity::Update()
     }else{
         m_renderComponent->SetString( std::to_string(minute) + ":" + std::to_string(second));
     }
-    
+
+    Game::Timer::GetInstance()->SetCountdown(timeLeft);
 }
 
 bool TimerEntity::timeUp(){

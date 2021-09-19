@@ -38,12 +38,14 @@ void PointEntity::OnRemoveFromWorld()
 void PointEntity::Update()
 {
     Entity::Update();
-    if(PointManager::GetInstance()->GetGoalBlobs() > previous){
-        points = PointManager::GetInstance()->GetGoalBlobs();
-    }
 
-    m_renderComponent->SetString("Points: " + std::to_string(points));
+    // if(PointManager::GetInstance()->GetGoalBlobs() != previous){
+    //     points = previous = PointManager::GetInstance()->GetGoalBlobs();
+    // }
+    // std::cout << PointManager::GetInstance()->GetGoalBlobs() << "\t";
+    // m_renderComponent->SetString("Points: " + std::to_string(points));
 
-    // m_renderComponent->SetString("Points: " + PointManager::GetInstance()->GetGoalBlobs());
+    m_renderComponent->SetString("Points: " + std::to_string(PointManager::GetInstance()->GetGoalBlobs()));
+    // m_renderComponent->
 }
 

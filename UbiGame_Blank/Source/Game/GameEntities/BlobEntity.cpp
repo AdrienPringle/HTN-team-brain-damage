@@ -187,7 +187,7 @@ float BlobEntity::getAngle()
 void BlobEntity::checkBoundaries(float left, float right, float top, float bottom){
     if ((GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom) && state == Active){
         state = BlobState::Edge;
-        std::cout << "edgy";
+        // std::cout << "edgy";
     }
 }
 

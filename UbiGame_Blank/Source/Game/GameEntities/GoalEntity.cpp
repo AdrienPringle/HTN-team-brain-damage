@@ -71,7 +71,6 @@ void GoalEntity::Update()
         }
         
         monchTime = GameEngine::GameEngineMain::GetGameTime();
-        m_renderComponent->SetTileIndex(sf::Vector2i(1,0));
         
     }
     
@@ -82,7 +81,7 @@ void GoalEntity::Update()
         case GoalState::Monch:
             SetSize(sf::Vector2f(WIDTH + 30*interp*sin(cyclePos), HEIGHT + 30*interp*cos(cyclePos)));
             SetPos(initialPos - sf::Vector2f(0, 15*interp*cos(cyclePos)));
-            
+            m_renderComponent->SetTileIndex(sf::Vector2i(1,0));
             if(timeElapsed > MONCHTIME * 2){
                 state == GoalState::Idle;
                 SetPos(initialPos);
@@ -96,6 +95,7 @@ void GoalEntity::Update()
         case GoalState::Anger:
             SetPos(initialPos - sf::Vector2f(15*interp*sin(cyclePos), 15*interp*cos(cyclePos)*cos(cyclePos)));
             SetRotation(10*interp*sin(cyclePos*4));
+            m_renderComponent->SetTileIndex(sf::Vector2i(0,0));
             if(timeElapsed > MONCHTIME * 2){
                 state == GoalState::Idle;
                 SetRotation(0);

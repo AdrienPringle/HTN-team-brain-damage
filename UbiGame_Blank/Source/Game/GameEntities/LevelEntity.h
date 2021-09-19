@@ -23,13 +23,13 @@ namespace Game
         void setAmount(float a);
         void setLevel(int l);
         void setTime(int m);
-
+        bool finishedSpawning;
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
 
         float frequency;
         float amount;
-        bool finishedSpawning;
+       
         int counter;
         bool spawn;
 

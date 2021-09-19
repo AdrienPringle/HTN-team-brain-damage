@@ -23,7 +23,7 @@ MenuController::MenuController() {
 	CreateMenuItems(800.f, 3);
 
 	timer = new TimerEntity();
-	timer->setTime(0.5);
+	timer->setTime(1.01);
 	timer->setStartTime(GameEngine::GameEngineMain::GetInstance()->GetGameTime());
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(timer);
 	PointManager::GetInstance()->ResetGoal();

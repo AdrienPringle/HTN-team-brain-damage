@@ -10,6 +10,8 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 
+#include "Game/Util/Timer.h"
+
 #include<random>
 #include<ctime>
 #include<chrono>
@@ -76,6 +78,7 @@ void LevelEntity::Update()
     }
 
     //randomize
+    finishedSpawning = Game::Timer::GetInstance()->GetCountdown() <= 0;
     if (finishedSpawning == false && spawn) {
         
         std::uniform_int_distribution<int> color(1, 4);
@@ -96,10 +99,12 @@ void LevelEntity::Update()
     //     finishedSpawning = true;
     // }
 
-    if(GameEngine::GameEngineMain::GetGameTime() >= minute*60){
-        finishedSpawning = true;
-    }
+    // if(GameEngine::GameEngineMain::GetGameTime() >= minute*60){
+    //     finishedSpawning = true;
+    // }
 }
+
+
 
 void LevelEntity::setFrenquency(float f) {
     frequency = f;
