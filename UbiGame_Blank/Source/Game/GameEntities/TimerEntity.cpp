@@ -41,7 +41,11 @@ void TimerEntity::OnRemoveFromWorld()
 }
 
 void TimerEntity::setTime(int t){
-    minute = t;
+    if(t == 0){
+        second = 0;
+    }else{
+        minute = t-1;
+    }
 }
 
 void TimerEntity::Update()

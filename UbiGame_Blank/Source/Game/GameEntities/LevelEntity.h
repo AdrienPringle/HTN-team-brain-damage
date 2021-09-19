@@ -22,6 +22,7 @@ namespace Game
         void setFrenquency(float f);
         void setAmount(float a);
         void setLevel(int l);
+        void setTime(int m);
 
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
@@ -31,7 +32,7 @@ namespace Game
         bool finishedSpawning;
         int counter;
         bool spawn;
-
+        int minute;
         
     };
 }

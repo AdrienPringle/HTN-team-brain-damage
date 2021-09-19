@@ -68,7 +68,11 @@ void LevelEntity::Update()
         counter++;
         spawn = false;
     }
-    if (counter == amount + 1) {
+    // if (counter == amount + 1) {
+    //     finishedSpawning = true;
+    // }
+
+    if(GameEngine::GameEngineMain::GetGameTime() >= minute*60){
         finishedSpawning = true;
     }
 }
@@ -79,4 +83,8 @@ void LevelEntity::setFrenquency(float f) {
 
 void LevelEntity::setAmount(float a) {
     amount = a;
+}
+
+void LevelEntity::setTime(int m){
+    minute = m;
 }
