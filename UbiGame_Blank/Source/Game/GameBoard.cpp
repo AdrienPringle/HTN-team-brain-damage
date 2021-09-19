@@ -1,7 +1,7 @@
 #include "GameBoard.h"
 
 #include "GameEngine/GameEngineMain.h"
-
+#include "Game/Util/MenuController.h"
 #include "Game/Util/WallManager.h"
 #include "Game/Util/PointManager.h"
 
@@ -24,5 +24,5 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {
-    WallManager::GetInstance()->Update();
+    MenuController::GetInstance()->Update();
 }

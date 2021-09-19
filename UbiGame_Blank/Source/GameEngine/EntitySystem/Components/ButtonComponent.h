@@ -14,6 +14,8 @@ namespace GameEngine
         ButtonComponent();
         virtual ~ButtonComponent();
 
+        bool isClicked = false;
+
         virtual void OnAddToWorld() override;
         virtual void OnRemoveFromWorld() override;
 
@@ -27,8 +29,10 @@ namespace GameEngine
     protected:
         void SetupDefaultBoundingBox();
 
+
         bool     m_useDefaultBox;
         AABBRect m_AABBBox;
     };
+
 }
 
