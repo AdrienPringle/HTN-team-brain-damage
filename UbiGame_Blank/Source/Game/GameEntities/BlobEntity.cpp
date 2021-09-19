@@ -111,13 +111,8 @@ void BlobEntity::Update()
             break;
     }
     
-
-<<<<<<< HEAD
-=======
     SetPos(GetPos() + dt * velocity);
     checkBoundaries(100, 900, 100, 900);
-
->>>>>>> 5e8fc67 (Falling off points)
 }
 
 void BlobEntity::reflect(sf::Vector2f normal){
