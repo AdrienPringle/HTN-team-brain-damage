@@ -124,6 +124,8 @@ sf::Vector2f CollidableComponent::intersectsLine(CollidableComponent *c){
 		return sf::Vector2f(0.f, 0.f);
 	}
 
+	offset = point - closestPoint; //not the closest distance, but always normal. comment out for closest
+
 	sf::Vector2f change = sf::Vector2f(-offset.x * (circle->getRadius() - closestDistance), -offset.y * (circle->getRadius() - closestDistance));
 	return change;
 }

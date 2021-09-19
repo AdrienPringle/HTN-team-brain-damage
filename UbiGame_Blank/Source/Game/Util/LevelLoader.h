@@ -9,6 +9,8 @@ namespace Game
 		~LevelLoader();
 
 		LevelLoader();
+
+		void Update();
 		
 		//void Level1();
 		
@@ -17,6 +19,8 @@ namespace Game
 							GameEngine::eTexture::type *textures, sf::Vector2f **vertices, int *verticesCount);
 
 		void CreateBlobs();
+
+		bool gameOver;
 
 		GameEngine::Entity* water;
 		GameEngine::Entity* island;

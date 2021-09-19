@@ -66,7 +66,7 @@ void MenuController::Update() {
 }
 
 void MenuController::StartGame() {
-
+	
 	//delete menu
 	GameEngine::GameEngineMain::GetInstance()->RemoveEntity(item);
 	item = nullptr;

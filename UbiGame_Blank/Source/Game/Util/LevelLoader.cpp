@@ -39,33 +39,33 @@ LevelLoader::LevelLoader()
 		gameOver = false;
 
 		////level 1
-		sf::Vector2f positions[5] = { sf::Vector2f(500.f, 50.f), sf::Vector2f(50.f, 500.f), sf::Vector2f(500.f, 500.f),
-									sf::Vector2f(500.f, 950.f), sf::Vector2f(950.f, 500.f)};
+		sf::Vector2f positions[5] = { sf::Vector2f(500.f, 50.f), sf::Vector2f(50.f, 500.f), 
+									sf::Vector2f(500.f, 950.f), sf::Vector2f(950.f, 500.f), sf::Vector2f(500.f, 500.f), };
 
-		sf::Vector2f sizes[5] = { sf::Vector2f(600.f, 100.f), sf::Vector2f(100.f, 600.f),sf::Vector2f(200.f, 100.f),
-									sf::Vector2f(600.f, 100.f), sf::Vector2f(100.f, 600.f) };
-		int verticesCount[5] = {4,4,3,4,4};
+		sf::Vector2f sizes[5] = { sf::Vector2f(300.f, 100.f), sf::Vector2f(300.f, 100.f),
+									sf::Vector2f(300.f, 100.f), sf::Vector2f(300.f, 100.f), sf::Vector2f(200.f, 100.f) };
+		int verticesCount[5] = {4,4,4,4,3};
 
 		sf::Vector2f* vertices[] = {nullptr, nullptr, nullptr, nullptr, nullptr};
-		vertices[0] = new sf::Vector2f[verticesCount[0]]{ sf::Vector2f(-300.f, 50.f),sf::Vector2f(-300.f, -50.f),
-									 sf::Vector2f(300.f, -50.f), sf::Vector2f(300.f,50.f) };
+		vertices[0] = new sf::Vector2f[verticesCount[0]]{ sf::Vector2f(-150.f, 50.f),sf::Vector2f(-150.f, -50.f),
+									 sf::Vector2f(150.f, -50.f), sf::Vector2f(150.f,50.f) };
 
 		vertices[1] = new sf::Vector2f[verticesCount[1]]{ sf::Vector2f(-50.f, 300.f),
-									sf::Vector2f(-50.f, -300.f),sf::Vector2f(50.f, -300.f),
-									 sf::Vector2f(50.f, 300.f) };
+									sf::Vector2f(-50.f, -150.f),sf::Vector2f(50.f, -150.f),
+									 sf::Vector2f(50.f, 150.f) };
 
-		vertices[2] = new sf::Vector2f[verticesCount[2]]{ sf::Vector2f(-100.f, 50.f),
-								sf::Vector2f(0.f, -50.f), sf::Vector2f(100.f, 50.f) };
+		vertices[2] = new sf::Vector2f[verticesCount[0]]{ sf::Vector2f(-150.f, 50.f),sf::Vector2f(-150.f, -50.f),
+							 sf::Vector2f(150.f, -50.f), sf::Vector2f(150.f,50.f) };
 
-		vertices[3] = new sf::Vector2f[verticesCount[0]]{ sf::Vector2f(-300.f, 50.f),sf::Vector2f(-300.f, -50.f),
-							 sf::Vector2f(300.f, -50.f), sf::Vector2f(300.f,50.f) };
+		vertices[3] = new sf::Vector2f[verticesCount[1]]{ sf::Vector2f(-50.f, 150.f),
+									sf::Vector2f(-50.f, -150.f),sf::Vector2f(50.f, -150.f),
+									 sf::Vector2f(50.f, 150.f) };
 
-		vertices[4] = new sf::Vector2f[verticesCount[1]]{ sf::Vector2f(-50.f, 300.f),
-									sf::Vector2f(-50.f, -300.f),sf::Vector2f(50.f, -300.f),
-									 sf::Vector2f(50.f, 300.f) };
+		vertices[4] = new sf::Vector2f[verticesCount[2]]{ sf::Vector2f(-100.f, 50.f),
+						sf::Vector2f(0.f, -50.f), sf::Vector2f(100.f, 50.f) };
 
-		GameEngine::eTexture::type textures[5] = { GameEngine::eTexture::Wall , GameEngine::eTexture::Wall, GameEngine::eTexture::Triangle,
-													GameEngine::eTexture::Wall , GameEngine::eTexture::Wall };
+		GameEngine::eTexture::type textures[5] = { GameEngine::eTexture::Wall , GameEngine::eTexture::Wall, GameEngine::eTexture::Wall,
+													GameEngine::eTexture::Wall , GameEngine::eTexture::Triangle };
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -78,16 +78,21 @@ LevelLoader::LevelLoader()
 
 void LevelLoader::CreateObstacle(sf::Vector2f *positions, sf::Vector2f *sizes,
 								GameEngine::eTexture::type *textures, sf::Vector2f **vertices, int *verticesCount) {
+	float rotation=0.f;
 	for (int i = 0; i < 5; i++)
 	{
+
+
 		ObstacleEntity* obstacle = new ObstacleEntity();
 		obstacle->SetPos(positions[i]);
 		obstacle->SetSize(sizes[i]);
 		obstacle->setVertices(vertices[i], verticesCount[i]);
 		obstacle->setTexture(textures[i]);
+		obstacle->SetRotation(rotation);
+	
 		
 		GameEngine::GameEngineMain::GetInstance()->AddEntity(obstacle);
-
+		rotation += (90.f);
 	}
 
 }
@@ -100,32 +105,43 @@ void LevelLoader::CreateBlobs() {
 	//GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
 
 	LevelEntity* level = new LevelEntity();
-	level->setAmount(100);
-	level->setFrenquency(0.1);
+	level->setAmount(20);
+	level->setFrenquency(3);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(level);
 }
 
 void LevelLoader::CreateFrogs() {
 
-		GoalEntity* goal = new GoalEntity();
-		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal);
-		goal->SetPos(sf::Vector2f(100.f, 100.f));
-		goal->setColor(1); //1-4	
-		
-		GoalEntity* goal2 = new GoalEntity();
-		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal2);
-		goal2->SetPos(sf::Vector2f(100.f, 900.f));
-		goal2->setColor(2); //1-4
+	GoalEntity* goal = new GoalEntity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(goal);
+	goal->SetPos(sf::Vector2f(150.f, 150.f));
+	goal->setColor(1); //1-4	
+	goal->SetRotation(-10.f);
 
-		GoalEntity* goal3 = new GoalEntity();
-		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal3);
-		goal3->SetPos(sf::Vector2f(900.f, 900.f));
-		goal3->setColor(3); //1-4
 
-		GoalEntity* goal4 = new GoalEntity();
-		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal4);
-		goal4->SetPos(sf::Vector2f(900.f, 100.f));
-		goal4->setColor(4); //1-4
-	
+	GoalEntity* goal2 = new GoalEntity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(goal2);
+	goal2->SetPos(sf::Vector2f(150.f, 850.f));
+	goal2->setColor(2); //1-4
+	goal2->SetRotation(-10.f);
+
+	GoalEntity* goal3 = new GoalEntity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(goal3);
+	goal3->SetPos(sf::Vector2f(850.f, 850.f));
+	goal3->setColor(3); //1-4
+	goal3->SetRotation(10.f);
+
+	GoalEntity* goal4 = new GoalEntity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(goal4);
+	goal4->SetPos(sf::Vector2f(850.f, 150.f));
+	goal4->setColor(4); //1-4
+	goal4->SetRotation(10.f);
+}
+
+
+void LevelLoader::Update() {
+	//if (timer=0 && gameover = false)
+	//set gameover = true 
+	//menucomponent menucomponent = new menucomponent();
 
 }
