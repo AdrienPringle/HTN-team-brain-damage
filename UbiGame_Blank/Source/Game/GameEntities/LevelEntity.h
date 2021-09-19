@@ -14,12 +14,6 @@ namespace Game
     public:
         LevelEntity();
         ~LevelEntity();
-        static LevelEntity* GetInstance() { if (!sm_instance) sm_instance = new LevelEntity(); return sm_instance; }
-
-        void RegisterBlob(BlobEntity* blob);
-        void UnRegisterBlob(BlobEntity* blob);
-
-        std::vector<BlobEntity*>& GetBlobs() { return blobs; }
 
         virtual void OnAddToWorld() override;
         virtual void OnRemoveFromWorld() override;
@@ -37,10 +31,6 @@ namespace Game
         bool finishedSpawning;
         int counter;
         bool spawn;
-
-        static LevelEntity* sm_instance;
-
-        std::vector<BlobEntity*> blobs;
 
         
     };

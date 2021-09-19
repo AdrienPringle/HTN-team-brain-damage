@@ -1,5 +1,5 @@
 #include "BlobEntity.h"
-#include "LevelEntity.h"
+#include "Game/Util/PointManager.h"
 
 #include <math.h>
 #ifndef M_PI
@@ -47,13 +47,13 @@ void BlobEntity::setColor(int c){
 void BlobEntity::OnAddToWorld()
 {
     Entity::OnAddToWorld();
-    LevelEntity::GetInstance()->RegisterBlob(this);
+    PointManager::GetInstance()->RegisterBlob(this);
 }
 
 void BlobEntity::OnRemoveFromWorld()
 {
     Entity::OnRemoveFromWorld();
-    LevelEntity::GetInstance()->UnRegisterBlob(this);
+    PointManager::GetInstance()->UnRegisterBlob(this);
 }
 
 void BlobEntity::updateAnimate(){
@@ -103,7 +103,7 @@ void BlobEntity::Update()
     }
     
     SetPos(GetPos() + dt * velocity);
-    checkBoundaries(100, 900, 100, 900);
+    checkBoundaries(0, 1000, 0, 1000);
 }
 
 void BlobEntity::reflect(sf::Vector2f normal){
@@ -166,7 +166,11 @@ float BlobEntity::getAngle()
 }
 
 void BlobEntity::checkBoundaries(float left, float right, float top, float bottom){
-    if (GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom){
-        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+    if ((GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom) && state == Active){
+        state = Edge;
     }
+}
+
+BlobState BlobEntity::getState(){
+    return state;
 }
