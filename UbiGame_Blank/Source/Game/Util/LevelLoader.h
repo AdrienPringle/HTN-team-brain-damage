@@ -8,22 +8,16 @@ namespace Game
 	public:
 		~LevelLoader();
 
-		void Update();
-
 		LevelLoader();
 		
+		//void Level1();
 		
 	private:
-		void CreateObstacle(sf::Vector2f *positions, sf::Vector2f *sizes, GameEngine::eTexture::type *textures);
+		void CreateObstacle(sf::Vector2f *positions, sf::Vector2f *sizes,
+							GameEngine::eTexture::type *textures, sf::Vector2f **vertices, int *verticesCount);
 
 		void CreateBlobs();
 
-		sf::Vector2f *positions;
-		sf::Vector2f *sizes;
-		sf::Vector2f **vertices;
-		GameEngine::eTexture::type* textures;
-		
-		int count;
 
 	};
 }

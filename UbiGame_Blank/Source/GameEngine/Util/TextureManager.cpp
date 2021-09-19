@@ -59,6 +59,7 @@ namespace TextureHelper
 		case GameEngine::eTexture::Cliff:   return sf::Vector2f(200.f, 200.f);
 		case GameEngine::eTexture::Triangle:   return sf::Vector2f(1845.f, 1492.f);
 		case GameEngine::eTexture::Yubel:   return sf::Vector2f(225.f, 225.f);
+		case GameEngine::eTexture::MenuBackground:   return sf::Vector2f(1000.f, 1000.f);
 		default:							 return sf::Vector2f(-1.f, -1.f);
         }
     }

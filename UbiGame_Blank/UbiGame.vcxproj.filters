@@ -1,37 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Source\Game\Util\LevelLoader.cpp" />
-    <ClCompile Include="Source\Game\Util\MenuController.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\ButtonManager.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleEmitterComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SoundComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\AnimationManager.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\AnimationComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidablePhysicsComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\CollidableComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\CollisionManager.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\SoundManager.cpp" />
-    <ClCompile Include="Source\Game\GameBoard.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\RenderComponent.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
-    <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
-    <ClCompile Include="Source\Game\Util\WallManager.cpp" />
-    <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Entity.cpp" />
-    <ClCompile Include="Source\GameEngine\GameEngineMain.cpp" />
-    <ClCompile Include="Source\GameEngine\Util\TextureManager.cpp" />
-    <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\StartEntity.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Source\GameEngine\GameEngineMain.cpp">
       <Filter>Source Files\GameEngine</Filter>
     </ClCompile>

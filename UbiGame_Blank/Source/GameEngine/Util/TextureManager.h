@@ -21,6 +21,7 @@ namespace GameEngine
 			Cliff,
 			Triangle,
 			Yubel,
+			MenuBackground,
 			Count,
 		};
 	}	
@@ -39,6 +40,7 @@ namespace GameEngine
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
 		case eTexture::Yubel:	  return "yubel.jpg";
+		case eTexture::MenuBackground:	  return "MenuBackground.png";
 		default:       return "UnknownTexType";
 		}
 	}

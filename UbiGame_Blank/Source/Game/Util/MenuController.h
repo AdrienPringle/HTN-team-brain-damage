@@ -5,7 +5,7 @@
 
 namespace Game
 {
-	class MenuController
+	class MenuController:public GameEngine::Entity
 	{
 	public:
 		~MenuController();
@@ -27,5 +27,8 @@ namespace Game
 		bool startGame = false;
 
 		GameEngine::Entity* item;
+		GameEngine::Entity* item2;
+
+
 	};
 }
