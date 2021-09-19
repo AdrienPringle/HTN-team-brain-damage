@@ -29,6 +29,7 @@ namespace Game
         void checkBoundaries(float left, float right, float top, float bottom);
 
         float getAngle();
+        BlobState getState();
 
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
