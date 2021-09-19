@@ -15,10 +15,15 @@ namespace GameEngine
 			Tileset,
 			BG,
 			Particles,
+			Start,
 			Wall,
 			Circle,
 			Cliff,
 			Triangle,
+			Yubel,
+			MenuBackground,
+			Water,
+			Island,
 			Blob1,
 			Blob2,
 			Blob3,
@@ -41,10 +46,15 @@ namespace GameEngine
 		case eTexture::Tileset:   return "tileset.png";
 		case eTexture::BG:		  return "bg.png";
 		case eTexture::Particles: return "particles.png";
+		case eTexture::Start: return "start.png";
 		case eTexture::Wall: 	  return "wall.png";
 		case eTexture::Circle: 	  return "circle.png";
 		case eTexture::Cliff: 	  return "cliff.png";
 		case eTexture::Triangle:  return "triangle.png";
+		case eTexture::Yubel:	  return "yubel.jpg";
+		case eTexture::MenuBackground:	  return "MenuBackground.png";
+		case eTexture::Water:	  return "Water.png";
+		case eTexture::Island:	  return "Island.png";
 
 		case eTexture::Blob1: 	  return "blob1.png";
 		case eTexture::Blob2: 	  return "blob2.png";

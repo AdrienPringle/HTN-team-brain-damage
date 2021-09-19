@@ -1,5 +1,4 @@
 #include "GoalEntity.h"
-
 #include "GameEngine/GameEngineMain.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidableComponent.h"

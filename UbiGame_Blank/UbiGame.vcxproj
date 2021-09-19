@@ -96,8 +96,10 @@
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,8 +120,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -135,8 +139,10 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -160,11 +166,15 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
-XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
+      <Command>
+				XCOPY "$(SolutionDir)Resources" "$(TargetDir)Resources" /S /Y /I
+				XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I
+			</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Game\Util\LevelLoader.cpp" />
+    <ClCompile Include="Source\Game\Util\MenuController.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\ButtonManager.cpp" />
@@ -183,6 +193,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\EntitySystem\Component.cpp" />
     <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\GoalEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
@@ -192,8 +203,11 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\GameEngineMain.cpp" />
     <ClCompile Include="Source\GameEngine\Util\TextureManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\StartEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Game\Util\LevelLoader.h" />
+    <ClInclude Include="Source\Game\Util\MenuController.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ButtonComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\ButtonManager.h" />
@@ -214,12 +228,33 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\GameEngineMain.h" />
     <ClInclude Include="Source\GameEngine\Util\TextureManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
+    <ClInclude Include="Source\Game\GameEntities\StartEntity.h" />
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\LevelEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\GoalEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
     <ClInclude Include="Source\Game\Util\WallManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\img\blob1.png" />
+    <Image Include="Resources\img\blob2.png" />
+    <Image Include="Resources\img\blob3.png" />
+    <Image Include="Resources\img\blob4.png" />
+    <Image Include="Resources\img\circle.png" />
+    <Image Include="Resources\img\cliff.png" />
+    <Image Include="Resources\img\goal1.png" />
+    <Image Include="Resources\img\goal2.png" />
+    <Image Include="Resources\img\goal3.png" />
+    <Image Include="Resources\img\goal4.png" />
+    <Image Include="Resources\img\Island.png" />
+    <Image Include="Resources\img\MenuBackground.png" />
+    <Image Include="Resources\img\start.png" />
+    <Image Include="Resources\img\triangle.png" />
+    <Image Include="Resources\img\wall.png" />
+    <Image Include="Resources\img\Water.png" />
+    <Image Include="Resources\img\yubel.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
