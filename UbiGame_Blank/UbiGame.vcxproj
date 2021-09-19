@@ -185,7 +185,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\GoalEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp" />
-    <ClCompile Include="Source\Game\GameEntities\MapEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\PointEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\TimerEntity.cpp" />
@@ -223,7 +222,6 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\GoalEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\LevelEntity.h" />
-    <ClInclude Include="Source\Game\GameEntities\MapEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\PointEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\TimerEntity.h" />
