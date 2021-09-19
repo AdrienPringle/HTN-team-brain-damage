@@ -7,13 +7,14 @@
 #include "Game/GameBoard.h"
 #include "Game/Util/LevelLoader.h"
 #include "Game/Util/WallManager.h"
+#include  "Game/GameEntities/LevelEntity.h"
 
 using namespace Game;
 MenuController* MenuController::sm_instance = nullptr;
 
 
 MenuController::MenuController() {
-	CreateMenuItems(370.f, 3);
+	CreateMenuItems(570.f, 3);
 }
 
 
@@ -59,8 +60,7 @@ void MenuController::Update() {
 	}
 	if (startGame)
 	{ 
-		WallManager::GetInstance()->Update();
-		//load level				
+		WallManager::GetInstance()->Update();				
 	}
 	
 }

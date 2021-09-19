@@ -54,12 +54,14 @@ namespace TextureHelper
         case  GameEngine::eTexture::BG:	     return sf::Vector2f(500.f, 500.f);
         case  GameEngine::eTexture::Particles: return sf::Vector2f(31.f, 32.f);
         case  GameEngine::eTexture::Start: return sf::Vector2f(200.f, 100.f);
-        case GameEngine::eTexture::Wall:  	 return sf::Vector2f(200.f, 20.f);
+        case GameEngine::eTexture::Wall:  	 return sf::Vector2f(196.f, 28.f);
 		case GameEngine::eTexture::Circle:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Cliff:   return sf::Vector2f(200.f, 200.f);
 		case GameEngine::eTexture::Triangle:   return sf::Vector2f(1845.f, 1492.f);
 		case GameEngine::eTexture::Yubel:   return sf::Vector2f(225.f, 225.f);
 		case GameEngine::eTexture::MenuBackground:   return sf::Vector2f(1000.f, 1000.f);
+		case GameEngine::eTexture::Water:   return sf::Vector2f(1000.f, 1000.f);
+		case GameEngine::eTexture::Island:   return sf::Vector2f(9072.f, 8521.f);
 		default:							 return sf::Vector2f(-1.f, -1.f);
         }
     }

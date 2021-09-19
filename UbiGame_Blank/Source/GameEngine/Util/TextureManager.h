@@ -22,6 +22,8 @@ namespace GameEngine
 			Triangle,
 			Yubel,
 			MenuBackground,
+			Water,
+			Island,
 			Count,
 		};
 	}	
@@ -41,6 +43,8 @@ namespace GameEngine
 		case eTexture::Triangle:  return "triangle.png";
 		case eTexture::Yubel:	  return "yubel.jpg";
 		case eTexture::MenuBackground:	  return "MenuBackground.png";
+		case eTexture::Water:	  return "Water.png";
+		case eTexture::Island:	  return "Island.png";
 		default:       return "UnknownTexType";
 		}
 	}

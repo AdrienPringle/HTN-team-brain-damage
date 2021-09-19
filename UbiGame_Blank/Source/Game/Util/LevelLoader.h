@@ -18,6 +18,8 @@ namespace Game
 
 		void CreateBlobs();
 
+		GameEngine::Entity* water;
+		GameEngine::Entity* island;
 
 	};
 }
