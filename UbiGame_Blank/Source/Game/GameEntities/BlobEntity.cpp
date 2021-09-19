@@ -111,7 +111,6 @@ void BlobEntity::Update()
             break;
     }
     
-    SetPos(GetPos() + dt * velocity);
     checkBoundaries(0, 1000, 0, 1000);
 }
 
