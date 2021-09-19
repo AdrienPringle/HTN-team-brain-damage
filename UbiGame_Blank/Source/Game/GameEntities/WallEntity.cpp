@@ -12,7 +12,7 @@
 using namespace Game;
 
 const float WIDTH = 200.f;
-const float HEIGHT = 20.f;
+const float HEIGHT = 32.f;
 
 WallEntity::WallEntity()
 {
