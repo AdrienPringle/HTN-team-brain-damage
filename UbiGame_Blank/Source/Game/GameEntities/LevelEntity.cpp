@@ -27,14 +27,6 @@ LevelEntity::LevelEntity()
     counter = 1;
     finishedSpawning = false;
 
-    //Render
-    m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
-    m_renderComponent->SetTexture(GameEngine::eTexture::Yubel);
-    m_renderComponent->SetZLevel(1);
-    float x = GameEngine::GameEngineMain::GetInstance()->GetRenderWindow()->getSize().x / 2;
-    float y = GameEngine::GameEngineMain::GetInstance()->GetRenderWindow()->getSize().y / 2;
-    SetPos(sf::Vector2f{ x,y });
-    SetSize(sf::Vector2f{ WIDTH,HEIGHT });
 }
 
 LevelEntity::~LevelEntity()
@@ -63,14 +55,16 @@ void LevelEntity::Update()
     //randomize
     if (finishedSpawning == false && spawn) {
         std::uniform_int_distribution<int> angle(0, 359);
-        std::uniform_real_distribution<float> position(50, 500);
+        std::uniform_int_distribution<int> color(1, 4);
+        std::uniform_real_distribution<float> position(200, 800);
 
         //spawn
-        BlobEntity* blob4 = new BlobEntity();
-        blob4->setVelAngle(angle(gen));
-        blob4->setSpeed(45);
-        blob4->SetPos(sf::Vector2f{ position(gen),position(gen) });
-        GameEngine::GameEngineMain::GetInstance()->AddEntity(blob4);
+        BlobEntity* blob = new BlobEntity();
+        blob->setVelAngle(angle(gen));
+        blob->setSpeed(45);
+        blob->SetPos(sf::Vector2f{ position(gen),position(gen) });
+        blob->setColor(color(gen));
+        GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
         counter++;
         spawn = false;
     }
