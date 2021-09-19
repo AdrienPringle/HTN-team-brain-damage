@@ -17,10 +17,17 @@ namespace Game
 
         void setColor(int c);
 
+        virtual void Update() override;
+        virtual void SetPos(sf::Vector2f) override;
+
     protected:
         GameEngine::SpriteRenderComponent *m_renderComponent;
         GameEngine::CollidableComponent * m_collidableComponent;
+        
+        bool isMonch;
+        float monchTime;
 
+        sf::Vector2f initialPos;
         
     };
 }
