@@ -50,7 +50,6 @@ namespace TextureHelper
         switch (texture)
         {
         case  GameEngine::eTexture::Start: return sf::Vector2f(200.f, 100.f);
-        case GameEngine::eTexture::Wall:  	 return sf::Vector2f(196.f, 28.f);
 		case GameEngine::eTexture::Circle:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Cliff:   return sf::Vector2f(200.f, 200.f);
 		case GameEngine::eTexture::Triangle:   return sf::Vector2f(1845.f, 1492.f);
