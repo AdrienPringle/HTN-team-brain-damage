@@ -1,4 +1,5 @@
 #include "BlobEntity.h"
+#include "LevelEntity.h"
 
 #include <math.h>
 #ifndef M_PI
@@ -46,11 +47,13 @@ void BlobEntity::setColor(int c){
 void BlobEntity::OnAddToWorld()
 {
     Entity::OnAddToWorld();
+    LevelEntity::GetInstance()->RegisterBlob(this);
 }
 
 void BlobEntity::OnRemoveFromWorld()
 {
     Entity::OnRemoveFromWorld();
+    LevelEntity::GetInstance()->UnRegisterBlob(this);
 }
 
 void BlobEntity::Update()
@@ -82,6 +85,12 @@ void BlobEntity::Update()
     }
     
 
+<<<<<<< HEAD
+=======
+    SetPos(GetPos() + dt * velocity);
+    checkBoundaries(100, 900, 100, 900);
+
+>>>>>>> 5e8fc67 (Falling off points)
 }
 
 void BlobEntity::reflect(sf::Vector2f normal){
@@ -141,4 +150,10 @@ void BlobEntity::setSpeed(float s){
 float BlobEntity::getAngle()
 {
     return angle;
+}
+
+void BlobEntity::checkBoundaries(float left, float right, float top, float bottom){
+    if (GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom){
+        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+    }
 }

@@ -2,6 +2,9 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+#include "BlobEntity.h"
+#include "GameEngine/Util/CollisionManager.h"
+#include <vector>
 
 namespace Game
 {
@@ -11,6 +14,12 @@ namespace Game
     public:
         LevelEntity();
         ~LevelEntity();
+        static LevelEntity* GetInstance() { if (!sm_instance) sm_instance = new LevelEntity(); return sm_instance; }
+
+        void RegisterBlob(BlobEntity* blob);
+        void UnRegisterBlob(BlobEntity* blob);
+
+        std::vector<BlobEntity*>& GetBlobs() { return blobs; }
 
         virtual void OnAddToWorld() override;
         virtual void OnRemoveFromWorld() override;
@@ -26,8 +35,13 @@ namespace Game
         float frequency;
         float amount;
         bool finishedSpawning;
-        float counter;
+        int counter;
         bool spawn;
+
+        static LevelEntity* sm_instance;
+
+        std::vector<BlobEntity*> blobs;
+
         
     };
 }
