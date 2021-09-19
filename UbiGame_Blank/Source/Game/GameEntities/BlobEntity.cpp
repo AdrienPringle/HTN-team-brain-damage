@@ -82,20 +82,29 @@ void BlobEntity::Update()
             updateAnimate();
             break;
         case BlobState::Goal:
-            SetSize(GetSize()-sf::Vector2f(dt*10.f, dt*10.f));
-            if(GetSize().x > WIDTH*4){
+            {sf::Vector2f newSize = GetSize()-sf::Vector2f(dt*100.f, dt*100.f);
+            if(newSize.x <= 5){
                 GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+                return;
             }
+            SetSize(newSize);
+            
             SetPos(GetPos() + dt * velocity);
-            m_renderComponent->UpdateSpriteParams();
+            m_renderComponent->UpdateSpriteParams();}
             break;
         case BlobState::WrongGoal:
             SetSize(GetSize()+sf::Vector2f(dt*20.f, dt*20.f));
-            if(GetSize().x > WIDTH*4){
+
+            sf::Vector2u screenSize = GameEngine::GameEngineMain::GetInstance()->GetRenderWindow()->getSize();
+            
+            if(GetPos().x < 0 || GetPos().y < 0 || GetPos().x > screenSize.x || GetPos().y > screenSize.y){
                 GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
             }
-
             m_renderComponent->UpdateSpriteParams();
+
+            velocity.y += dt * 200;
+            SetPos(GetPos() + dt * 5 * velocity);
+            SetRotation(GetRot() + dt * 50 * velocity.x);
             break;
     }
     
