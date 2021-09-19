@@ -26,7 +26,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries> 
+    <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -238,11 +238,23 @@
     <ClInclude Include="Source\Game\Util\WallManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\img\blob1.png" />
+    <Image Include="Resources\img\blob2.png" />
+    <Image Include="Resources\img\blob3.png" />
+    <Image Include="Resources\img\blob4.png" />
     <Image Include="Resources\img\circle.png" />
     <Image Include="Resources\img\cliff.png" />
+    <Image Include="Resources\img\goal1.png" />
+    <Image Include="Resources\img\goal2.png" />
+    <Image Include="Resources\img\goal3.png" />
+    <Image Include="Resources\img\goal4.png" />
+    <Image Include="Resources\img\Island.png" />
+    <Image Include="Resources\img\MenuBackground.png" />
     <Image Include="Resources\img\start.png" />
     <Image Include="Resources\img\triangle.png" />
     <Image Include="Resources\img\wall.png" />
+    <Image Include="Resources\img\Water.png" />
+    <Image Include="Resources\img\yubel.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
