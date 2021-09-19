@@ -80,6 +80,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp">
+    <ClCompile Include="Source\Game\GameEntities\GoalEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -160,6 +161,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Game\GameEntities\LevelEntity.h">
+    <ClInclude Include="Source\Game\GameEntities\GoalEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

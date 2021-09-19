@@ -21,5 +21,7 @@ namespace Game
 		GameEngine::Entity* water;
 		GameEngine::Entity* island;
 
+		void CreateFrogs();
+
 	};
 }

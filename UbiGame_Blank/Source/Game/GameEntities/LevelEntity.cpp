@@ -64,12 +64,14 @@ void LevelEntity::Update()
     if (finishedSpawning == false && spawn) {
         std::uniform_int_distribution<int> angle(0, 359);
         std::uniform_real_distribution<float> position(630, 770);
+        std::uniform_int_distribution<int> color(1, 4);
 
         //spawn
         BlobEntity* blob = new BlobEntity();
         blob->setVelAngle(angle(gen));
         blob->setSpeed(85);
         blob->SetPos(sf::Vector2f{ position(gen),position(gen) });
+        blob->setColor(color(gen));
         GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
         counter++;
         spawn = false;

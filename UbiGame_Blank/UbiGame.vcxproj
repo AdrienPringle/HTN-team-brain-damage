@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Game\GameComponents\MovementComponent.cpp" />
     <ClCompile Include="Source\Game\GameEntities\BlobEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\LevelEntity.cpp" />
+    <ClCompile Include="Source\Game\GameEntities\GoalEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\ObstacleEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
     <ClCompile Include="Source\Game\Util\WallManager.cpp" />
@@ -231,6 +232,7 @@
     <ClInclude Include="Source\Game\GameComponents\MovementComponent.h" />
     <ClInclude Include="Source\Game\GameEntities\BlobEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\LevelEntity.h" />
+    <ClInclude Include="Source\Game\GameEntities\GoalEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\ObstacleEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
     <ClInclude Include="Source\Game\Util\WallManager.h" />

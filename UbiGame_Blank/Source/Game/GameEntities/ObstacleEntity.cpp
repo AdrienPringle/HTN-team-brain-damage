@@ -35,10 +35,12 @@ void ObstacleEntity::setVertices(sf::Vector2f vertices[], int vertexCount){
         vertices[i+1] += GetPos();
         GameEngine::CollidableComponent* collideComponent = AddComponent<GameEngine::CollidableComponent>();
         collideComponent->SetColliderType(GameEngine::ColliderType::Line);
+        collideComponent->SetEntityType(GameEngine::EntityType::Collider);
         collideComponent->setIntersectLine(vertices[i], vertices[i+1]);
     }
     GameEngine::CollidableComponent* collideComponent = AddComponent<GameEngine::CollidableComponent>();
     collideComponent->SetColliderType(GameEngine::ColliderType::Line);
+    collideComponent->SetEntityType(GameEngine::EntityType::Collider);
     collideComponent->setIntersectLine(vertices[vertexCount - 1], vertices[0]);
 
     m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();

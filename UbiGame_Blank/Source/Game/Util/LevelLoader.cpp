@@ -7,6 +7,7 @@
 #include "GameEngine/EntitySystem/Entity.h"
 #include "Game/GameEntities/BlobEntity.h"
 #include "Game/GameEntities/LevelEntity.h"
+#include"Game/GameEntities/GoalEntity.h"
 #include <iostream>
 
 using namespace Game;
@@ -35,9 +36,11 @@ LevelLoader::LevelLoader()
 
 
 	void level1(); {
+		gameOver = false;
+
 		////level 1
 		sf::Vector2f positions[5] = { sf::Vector2f(500.f, 50.f), sf::Vector2f(50.f, 500.f), sf::Vector2f(500.f, 500.f),
-									sf::Vector2f(500.f, 950.f), sf::Vector2f(950.f, 500.f), };
+									sf::Vector2f(500.f, 950.f), sf::Vector2f(950.f, 500.f)};
 
 		sf::Vector2f sizes[5] = { sf::Vector2f(600.f, 100.f), sf::Vector2f(100.f, 600.f),sf::Vector2f(200.f, 100.f),
 									sf::Vector2f(600.f, 100.f), sf::Vector2f(100.f, 600.f) };
@@ -68,6 +71,7 @@ LevelLoader::LevelLoader()
 
 		CreateObstacle(positions, sizes, textures, vertices, verticesCount);
 		CreateBlobs();
+		CreateFrogs();
 	}
 
 }
@@ -96,7 +100,32 @@ void LevelLoader::CreateBlobs() {
 	//GameEngine::GameEngineMain::GetInstance()->AddEntity(blob);
 
 	LevelEntity* level = new LevelEntity();
-	level->setAmount(1000);
+	level->setAmount(100);
 	level->setFrenquency(0.1);
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(level);
+}
+
+void LevelLoader::CreateFrogs() {
+
+		GoalEntity* goal = new GoalEntity();
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal);
+		goal->SetPos(sf::Vector2f(100.f, 100.f));
+		goal->setColor(1); //1-4	
+		
+		GoalEntity* goal2 = new GoalEntity();
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal2);
+		goal2->SetPos(sf::Vector2f(100.f, 900.f));
+		goal2->setColor(2); //1-4
+
+		GoalEntity* goal3 = new GoalEntity();
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal3);
+		goal3->SetPos(sf::Vector2f(900.f, 900.f));
+		goal3->setColor(3); //1-4
+
+		GoalEntity* goal4 = new GoalEntity();
+		GameEngine::GameEngineMain::GetInstance()->AddEntity(goal4);
+		goal4->SetPos(sf::Vector2f(900.f, 100.f));
+		goal4->setColor(4); //1-4
+	
+
 }

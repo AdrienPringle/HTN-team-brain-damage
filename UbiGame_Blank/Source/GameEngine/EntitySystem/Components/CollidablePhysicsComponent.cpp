@@ -45,7 +45,6 @@ void CollidablePhysicsComponent::Update()
 		if (colComponent == this)
 			continue;
 		if (
-			GetColliderType() == ColliderType::Line || 
 			GetColliderType() == ColliderType::NoClip || 
 			colComponent->GetColliderType() == ColliderType::NoClip
 		){
@@ -63,13 +62,15 @@ void CollidablePhysicsComponent::Update()
 			sf::Vector2f pos = GetEntity()->GetPos();
 			GetEntity()->SetPos(pos - intersect);
 			setIntersectDist(intersect);
-
-			if(colComponent->GetColliderType() == ColliderType::Circle){
+			setCollidedComponent(colComponent);
+			EntityType type = colComponent->GetEntityType();
+			if(type == EntityType::Blob){
 				sf::Vector2f colPos = colComponent->GetEntity()->GetPos();
 				colComponent->GetEntity()->SetPos(colPos + intersect);
-				colComponent->setIntersectDist(-intersect);
 			}
 			colComponent->setIntersectDist(-intersect);
+			colComponent->setCollidedComponent(this);
+			
 			
 		}
 	}

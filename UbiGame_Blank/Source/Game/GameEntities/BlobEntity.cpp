@@ -17,20 +17,30 @@ const float HEIGHT = 20.f;
 
 BlobEntity::BlobEntity()
 {
+    state = BlobState::Active;
     SetRotation(0.f);
     //Render
     m_renderComponent = AddComponent<GameEngine::SpriteRenderComponent>();
-    m_renderComponent->SetTexture(GameEngine::eTexture::Circle);
+   
     m_renderComponent->SetZLevel(2);
 
     m_collideComponent = AddComponent<GameEngine::CollidablePhysicsComponent>();
     m_collideComponent->SetColliderType(GameEngine::ColliderType::Circle);
+    m_collideComponent->SetEntityType(GameEngine::EntityType::Blob);
+    
 
     SetSize(sf::Vector2f(WIDTH, HEIGHT));
 }
 
 BlobEntity::~BlobEntity()
 {
+}
+
+void BlobEntity::setColor(int c){
+    
+    m_renderComponent->SetTexture(GameEngine::blobTextures[c-1]);
+    m_collideComponent->setColor(c);
+    color = c;
 }
 
 void BlobEntity::OnAddToWorld()
@@ -48,10 +58,29 @@ void BlobEntity::Update()
     Entity::Update();
     float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
-    handleIntersect();
-    
+    switch (state){
+        case BlobState::Active:
+            handleIntersect();
+            SetPos(GetPos() + dt * velocity);
+            break;
+        case BlobState::Goal:
+            SetSize(GetSize()-sf::Vector2f(dt*10.f, dt*10.f));
+            if(GetSize().x > WIDTH*4){
+                GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+            }
+            SetPos(GetPos() + dt * velocity);
+            m_renderComponent->UpdateSpriteParams();
+            break;
+        case BlobState::WrongGoal:
+            SetSize(GetSize()+sf::Vector2f(dt*20.f, dt*20.f));
+            if(GetSize().x > WIDTH*4){
+                GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+            }
 
-    SetPos(GetPos() + dt * velocity);
+            m_renderComponent->UpdateSpriteParams();
+            break;
+    }
+    
 
 }
 
@@ -71,10 +100,26 @@ void BlobEntity::reflect(sf::Vector2f normal){
 void BlobEntity::handleIntersect(){
     sf::Vector2f intersect = m_collideComponent->didIntersect();
     if(intersect.x != 0.f || intersect.y != 0.f){
+        
+        switch(m_collideComponent->getCollidedComponent()->GetEntityType()){
+            case GameEngine::EntityType::Blob:;
+            case GameEngine::EntityType::Collider:
+                reflect(intersect);
+                m_collideComponent->resolveIntersect();
+                break;
+            case GameEngine::EntityType::Goal:
+                m_collideComponent->SetColliderType(GameEngine::ColliderType::NoClip);
+                
 
-        reflect(intersect);
+                if(m_collideComponent->getCollidedComponent()->getColor() == color){
+                    state = BlobState::Goal;
+                } else {
+                    state = BlobState::WrongGoal;
+                }
+                break;
+        }
 
-        m_collideComponent->resolveIntersect();
+        
     }
 }
 

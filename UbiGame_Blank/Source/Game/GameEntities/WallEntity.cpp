@@ -26,7 +26,7 @@ WallEntity::WallEntity()
     //this makes a visible hitbox that doesn't match the wall
     m_collidableComponent = AddComponent<GameEngine::CollidableComponent>();
     m_collidableComponent->SetColliderType(GameEngine::ColliderType::NoClip);
-
+    m_collidableComponent->SetEntityType(GameEngine::EntityType::Collider);
 
     SetSize(sf::Vector2f(WIDTH, HEIGHT));
 }

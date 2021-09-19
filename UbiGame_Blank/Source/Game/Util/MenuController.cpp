@@ -14,7 +14,7 @@ MenuController* MenuController::sm_instance = nullptr;
 
 
 MenuController::MenuController() {
-	CreateMenuItems(570.f, 3);
+	CreateMenuItems(800.f, 3);
 }
 
 

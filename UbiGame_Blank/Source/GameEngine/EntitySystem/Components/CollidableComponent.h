@@ -14,6 +14,12 @@ namespace GameEngine
 		NoClip
 	};
 
+	enum EntityType {
+		Blob,
+		Goal,
+		Collider,
+	};
+
 	class CollidableComponent : public Component
 	{
 	public:
@@ -28,10 +34,19 @@ namespace GameEngine
 
 		sf::Vector2f didIntersect();
 		void setIntersectDist(sf::Vector2f dist);
+		void setCollidedComponent(CollidableComponent* c) {m_recentCollided = c ;}
+		CollidableComponent* getCollidedComponent(){ return m_recentCollided; }
 		void resolveIntersect();
 
 		void SetColliderType(ColliderType type){ m_type = type; }
 		ColliderType GetColliderType(){ return m_type; }
+
+		void SetEntityType(EntityType type){ m_etype = type; }
+		EntityType GetEntityType(){ return m_etype; }
+
+		void setColor(int c){color = c;}
+		int getColor(){return color;}
+
 
 		//for circle
 		float getRadius();
@@ -51,7 +66,7 @@ namespace GameEngine
 		sf::Vector2f intersectsCircle(CollidableComponent* c);
 		sf::Vector2f intersectsLine(CollidableComponent * c);
 	
-		bool	 m_useDefaultCircle;
+		bool m_useDefaultCircle;
 
 		float radius;
 		sf::Vector2f start;
@@ -60,6 +75,9 @@ namespace GameEngine
 		sf::Vector2f intersectDist;
 
 		ColliderType m_type;
+		EntityType m_etype;
+		CollidableComponent* m_recentCollided;
+		int color;
 	};
 }
 
