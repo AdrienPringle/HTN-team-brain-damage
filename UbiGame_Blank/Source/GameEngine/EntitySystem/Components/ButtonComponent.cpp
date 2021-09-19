@@ -70,4 +70,5 @@ const AABBRect ButtonComponent::GetWorldAABB() const
 
 void ButtonComponent::OnButtonClicked()
 {
+    isClicked = true;
 }

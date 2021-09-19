@@ -189,6 +189,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\Game\GameEntities\PointEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\TimerEntity.cpp" />
     <ClCompile Include="Source\Game\GameEntities\WallEntity.cpp" />
+    <ClCompile Include="Source\Game\Util\LevelLoader.cpp" />
+    <ClCompile Include="Source\Game\Util\MenuController.cpp" />
     <ClCompile Include="Source\Game\Util\PointManager.cpp" />
     <ClCompile Include="Source\Game\Util\WallManager.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -226,6 +228,8 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\Game\GameEntities\PointEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\TimerEntity.h" />
     <ClInclude Include="Source\Game\GameEntities\WallEntity.h" />
+    <ClInclude Include="Source\Game\Util\LevelLoader.h" />
+    <ClInclude Include="Source\Game\Util\MenuController.h" />
     <ClInclude Include="Source\Game\Util\PointManager.h" />
     <ClInclude Include="Source\Game\Util\WallManager.h" />
   </ItemGroup>
