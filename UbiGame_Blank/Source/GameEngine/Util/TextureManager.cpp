@@ -58,11 +58,10 @@ namespace TextureHelper
 		case GameEngine::eTexture::Cliff:   return sf::Vector2f(200.f, 200.f);
 		case GameEngine::eTexture::Triangle:   return sf::Vector2f(1845.f, 1492.f);
 
-		case GameEngine::eTexture::Blob1:   return sf::Vector2f(896.f, 896.f);
-		case GameEngine::eTexture::Blob2:   return sf::Vector2f(896.f, 896.f);
-		case GameEngine::eTexture::Blob3:   return sf::Vector2f(896.f, 896.f);
-		case GameEngine::eTexture::Blob4:   return sf::Vector2f(896.f, 896.f);
-
+		case GameEngine::eTexture::Blob1:   return sf::Vector2f(900.f, 800.f);
+		case GameEngine::eTexture::Blob2:   return sf::Vector2f(900.f, 800.f);
+		case GameEngine::eTexture::Blob3:   return sf::Vector2f(900.f, 800.f);
+		case GameEngine::eTexture::Blob4:   return sf::Vector2f(900.f, 800.f);
 		case GameEngine::eTexture::Goal1:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Goal2:   return sf::Vector2f(896.f, 896.f);
 		case GameEngine::eTexture::Goal3:   return sf::Vector2f(896.f, 896.f);

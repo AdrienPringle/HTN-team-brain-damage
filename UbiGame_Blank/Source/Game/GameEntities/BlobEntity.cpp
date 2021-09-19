@@ -12,8 +12,8 @@
 
 using namespace Game;
 
-const float WIDTH = 20.f;
-const float HEIGHT = 20.f;
+const float WIDTH = 50.f;
+const float HEIGHT = 50.f;
 
 BlobEntity::BlobEntity()
 {
@@ -53,6 +53,22 @@ void BlobEntity::OnRemoveFromWorld()
     Entity::OnRemoveFromWorld();
 }
 
+void BlobEntity::updateAnimate(){
+    const float SLITHERFREQ = 0.25; //0.25 slither / second
+    const float SLITHERTIME = 1/SLITHERFREQ;
+
+    float timeElapsed = GameEngine::GameEngineMain::GetGameTime() - SLITHERTIME;
+    // float interp = 4*(timeElapsed * SLITHERFREQ * 0.5)*(1 - timeElapsed*SLITHERFREQ*0.5);
+    float cyclePos = fmod(2 * M_PI * timeElapsed * SLITHERFREQ, 2 * M_PI);
+    float s = sin(cyclePos);
+    float c = cos(cyclePos);
+    SetSize(sf::Vector2f(WIDTH + 10*s*s, HEIGHT + 5*c*c*c*c));    
+
+    m_renderComponent->UpdateSpriteParams();
+
+    
+}
+
 void BlobEntity::Update()
 {
     Entity::Update();
@@ -62,6 +78,8 @@ void BlobEntity::Update()
         case BlobState::Active:
             handleIntersect();
             SetPos(GetPos() + dt * velocity);
+            m_renderComponent->SetTileIndex(sf::Vector2i(velocity.x > 0 ? 0 : 1 ,0));
+            updateAnimate();
             break;
         case BlobState::Goal:
             SetSize(GetSize()-sf::Vector2f(dt*10.f, dt*10.f));

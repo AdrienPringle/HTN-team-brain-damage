@@ -44,6 +44,8 @@ namespace Game
         float speed;
 
         int color;
+
+        void updateAnimate();
         
     };
 }

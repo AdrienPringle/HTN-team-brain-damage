@@ -7,7 +7,12 @@
 #include <vector>
 
 namespace Game
-{
+{   
+    enum GoalState {
+        Idle, 
+        Monch,
+        Anger
+    };
 
     class GoalEntity : public GameEngine::Entity
     {
@@ -24,8 +29,10 @@ namespace Game
         GameEngine::SpriteRenderComponent *m_renderComponent;
         GameEngine::CollidableComponent * m_collidableComponent;
         
-        bool isMonch;
+        GoalState state;
         float monchTime;
+
+        int color;
 
         sf::Vector2f initialPos;
         
