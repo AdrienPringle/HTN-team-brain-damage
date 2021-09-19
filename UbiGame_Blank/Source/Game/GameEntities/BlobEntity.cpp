@@ -10,7 +10,7 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 
-
+#include <iostream>
 using namespace Game;
 
 const float WIDTH = 50.f;
@@ -96,7 +96,7 @@ void BlobEntity::Update()
             m_renderComponent->UpdateSpriteParams();}
             break;
         case BlobState::WrongGoal:
-            SetSize(GetSize()+sf::Vector2f(dt*20.f, dt*20.f));
+            {SetSize(GetSize()+sf::Vector2f(dt*20.f, dt*20.f));
 
             sf::Vector2u screenSize = GameEngine::GameEngineMain::GetInstance()->GetRenderWindow()->getSize();
             
@@ -108,10 +108,20 @@ void BlobEntity::Update()
             velocity.y += dt * 200;
             SetPos(GetPos() + dt * 5 * velocity);
             SetRotation(GetRot() + dt * 50 * velocity.x);
-            break;
+            break;}
+        case BlobState::Edge:
+            {sf::Vector2f newSize = GetSize()-sf::Vector2f(dt*100.f, dt*100.f);
+            if(newSize.x <= 5){
+                GameEngine::GameEngineMain::GetInstance()->RemoveEntity(this);
+                return;
+            }
+            SetSize(newSize);SetPos(GetPos() + (float)( 0.5 * dt) * velocity);
+            SetRotation(GetRot() + dt * 720.f);
+            m_renderComponent->UpdateSpriteParams();
+            break;}
     }
     
-    checkBoundaries(0, 1000, 0, 1000);
+    checkBoundaries(50, 950, 50, 950);
 }
 
 void BlobEntity::reflect(sf::Vector2f normal){
@@ -175,7 +185,8 @@ float BlobEntity::getAngle()
 
 void BlobEntity::checkBoundaries(float left, float right, float top, float bottom){
     if ((GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom) && state == Active){
-        state = Edge;
+        state = BlobState::Edge;
+        std::cout << "edgy";
     }
 }
 
