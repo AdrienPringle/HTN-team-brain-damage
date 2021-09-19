@@ -187,6 +187,8 @@ void BlobEntity::checkBoundaries(float left, float right, float top, float botto
     if ((GetPos().x < left || GetPos().x > right || GetPos().y < top || GetPos().y>bottom) && state == Active){
         state = BlobState::Edge;
         std::cout << "edgy";
+        state = Edge;
+
     }
 }
 
